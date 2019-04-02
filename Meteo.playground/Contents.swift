@@ -171,7 +171,7 @@ struct WeatherDetail: Codable {
     let city: CityDetail
 }
 
-// function to start the API
+// function to get current weather by
 func queryCurrentWeather(matching query: [String: String], completion: @escaping (City?) -> Void) -> Void {
     
     let baseURL = URL(string: urlPath+"/weather?")!
@@ -223,4 +223,45 @@ func queryFiveDayWeather(matching query: [String: String], completion: @escaping
     task.resume()
 }
 
+/*queryCurrentWeather(matching: ["q" : "London"]) { (result) in
+ print(result)
+ PlaygroundPage.current.finishExecution()
+ }*/
 
+struct CityData: Codable {
+    let id: Int
+    let name: String
+    let country: String
+    let coord: Coord
+}
+
+func loadJson(filename fileName: String) -> [CityData]? {
+    if let url = Bundle.main.url(forResource: fileName, withExtension: "json") {
+        do {
+            let data = try Data(contentsOf: url)
+            let decoder = JSONDecoder()
+            let jsonData = try decoder.decode([CityData].self, from: data)
+            return jsonData
+        } catch {
+            print("error:\(error)")
+        }
+    }
+    return nil
+}
+
+let cities = loadJson(filename: "city.list")
+
+func queryCityByName(matching cityName: String, completion: @escaping (CityData?) -> Void) -> Void {
+    if let city  = cities?.first(where: { $0.name == cityName }) {
+        completion(city)
+    }
+    
+}
+
+queryCityByName(matching: "Paris") { (result) in
+    print(result)
+    
+}
+
+
+PlaygroundPage.current.finishExecution()
