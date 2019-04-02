@@ -45,6 +45,131 @@ struct Main: Codable {
     let temp_max: Double
 }
 
+struct Clouds: Codable {
+    let all: Int?
+}
+
+struct Wind: Codable {
+    let speed: Double
+    let deg: Double
+}
+
+struct Sys: Codable {
+    let pod: String?
+}
+
+struct Rain: Codable {
+    let rain: Double?
+    
+    enum CodingKeys: String, CodingKey {
+        case rain = "3h"
+    }
+    
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        self.rain = try container.decodeIfPresent(Double.self, forKey: .rain)
+    }
+    
+    func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(self.rain, forKey: .rain)
+    }
+}
+
+struct Snow: Codable {
+    let snow: Double?
+    
+    enum CodingKeys: String, CodingKey {
+        case snow = "3h"
+    }
+    
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        self.snow = try container.decodeIfPresent(Double.self, forKey: .snow)
+    }
+    
+    func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(self.snow, forKey: .snow)
+    }
+}
+
+struct CityDetail: Codable {
+    let id: Int
+    let name: String
+    let coord: Coord
+    let country: String
+    let population: Int
+}
+
+struct MainDetail: Codable {
+    let temp: Double
+    let temp_min: Double
+    let temp_max: Double
+    let pressure: Double
+    let sea_level: Double
+    let grnd_level: Double
+    let humidity: Double
+    let temp_kf: Double
+}
+
+struct Detail: Codable {
+    let dt: Int
+    let main: MainDetail
+    let weather: [CityWeather]
+    let clouds: Clouds
+    let wind: Wind
+    let rain: Rain?
+    let snow: Snow?
+    let sys: Sys
+    let dt_txt: String
+    
+    enum CodingKeys: String, CodingKey {
+        case dt = "dt"
+        case main = "main"
+        case weather = "weather"
+        case clouds = "clouds"
+        case wind = "wind"
+        case rain = "rain"
+        case snow = "snow"
+        case sys = "sys"
+        case dt_txt = "dt_txt"
+    }
+    
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        self.dt = try container.decode(Int.self, forKey: .dt)
+        self.main = try container.decode(MainDetail.self, forKey: .main)
+        self.weather = try container.decode([CityWeather].self, forKey: .weather)
+        self.clouds = try container.decode(Clouds.self, forKey: .clouds)
+        self.wind = try container.decode(Wind.self, forKey: .wind)
+        self.rain = try container.decodeIfPresent(Rain.self, forKey: .rain)
+        self.snow = try container.decodeIfPresent(Snow.self, forKey: .snow)
+        self.sys = try container.decode(Sys.self, forKey: .sys)
+        self.dt_txt = try container.decode(String.self, forKey: .dt_txt)
+    }
+    
+    func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(self.dt, forKey: .dt)
+        try container.encode(self.main, forKey: .main)
+        try container.encode(self.weather, forKey: .weather)
+        try container.encode(self.clouds, forKey: .clouds)
+        try container.encode(self.wind, forKey: .wind)
+        try container.encode(self.rain, forKey: .rain)
+        try container.encode(self.snow, forKey: .snow)
+        try container.encode(self.sys, forKey: .sys)
+        try container.encode(self.dt_txt, forKey: .dt_txt)
+    }
+}
+
+struct WeatherDetail: Codable {
+    let cod: String
+    let message: Double
+    let cnt: Int
+    let list: [Detail]
+    let city: CityDetail
+}
 
 // function to start the API
 func queryCurrentWeather(matching query: [String: String], completion: @escaping (City?) -> Void) -> Void {
@@ -59,10 +184,8 @@ func queryCurrentWeather(matching query: [String: String], completion: @escaping
 
     let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
         let jsonDecoder = JSONDecoder()
-//        print(String(data: data!, encoding: .utf8))
         if let data = data,
             let results = try? jsonDecoder.decode(City.self, from: data) {
-            print(results)
             completion(results)
         }
         else {
@@ -74,9 +197,9 @@ func queryCurrentWeather(matching query: [String: String], completion: @escaping
     task.resume()
 }
 
-func queryFiveDayWeather(matching query: [String: String], completion: @escaping (City?) -> Void) -> Void {
+func queryFiveDayWeather(matching query: [String: String], completion: @escaping (WeatherDetail?) -> Void) -> Void {
     
-    let baseURL = URL(string: urlPath+"/forcast?")!
+    let baseURL = URL(string: urlPath+"forecast?")!
     
     var query = query
     query["APPID"] = APPID
@@ -86,10 +209,9 @@ func queryFiveDayWeather(matching query: [String: String], completion: @escaping
     
     let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
         let jsonDecoder = JSONDecoder()
-        //        print(String(data: data!, encoding: .utf8))
+        
         if let data = data,
-            let results = try? jsonDecoder.decode(City.self, from: data) {
-            print(results)
+            let results = try? jsonDecoder.decode(WeatherDetail.self, from: data) {
             completion(results)
         }
         else {
@@ -102,8 +224,3 @@ func queryFiveDayWeather(matching query: [String: String], completion: @escaping
 }
 
 
-
-queryCurrentWeather(matching: ["q": "London"]) { (result) in
-    print(result)
-    PlaygroundPage.current.finishExecution()
-}
