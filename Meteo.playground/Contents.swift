@@ -103,14 +103,14 @@ struct CityDetail: Codable {
 }
 
 struct MainDetail: Codable {
-    let temp: Double
-    let temp_min: Double
-    let temp_max: Double
-    let pressure: Double
-    let sea_level: Double
-    let grnd_level: Double
-    let humidity: Double
-    let temp_kf: Double
+    let temp: Float
+    let temp_min: Float
+    let temp_max: Float
+    let pressure: Float
+    let sea_level: Float
+    let grnd_level: Float
+    let humidity: Float
+    let temp_kf: Float
 }
 
 struct Detail: Codable {
@@ -189,7 +189,7 @@ func queryCurrentWeather(matching query: [String: String], completion: @escaping
             completion(results)
         }
         else {
-            print(error)
+            print(error!)
         }
         
     }
@@ -215,18 +215,13 @@ func queryFiveDayWeather(matching query: [String: String], completion: @escaping
             completion(results)
         }
         else {
-            print(error)
+            print(error!)
         }
         
     }
     
     task.resume()
 }
-
-/*queryCurrentWeather(matching: ["q" : "London"]) { (result) in
- print(result)
- PlaygroundPage.current.finishExecution()
- }*/
 
 struct CityData: Codable {
     let id: Int
@@ -243,7 +238,7 @@ func loadJson(filename fileName: String) -> [CityData]? {
             let jsonData = try decoder.decode([CityData].self, from: data)
             return jsonData
         } catch {
-            print("error:\(error)")
+            print("error")
         }
     }
     return nil
@@ -251,15 +246,23 @@ func loadJson(filename fileName: String) -> [CityData]? {
 
 let cities = loadJson(filename: "city.list")
 
-func queryCityByName(matching cityName: String, completion: @escaping (CityData?) -> Void) -> Void {
+func queryCityByName( cityName: String, completion: (CityData?) -> Void ){
     if let city  = cities?.first(where: { $0.name == cityName }) {
         completion(city)
     }
     
 }
 
-queryCityByName(matching: "Paris") { (result) in
-    print(result)
+queryCurrentWeather(matching: ["q" : "London"]) { (result) in
+    print(result!.name)
+}
+
+queryFiveDayWeather(matching: ["q" : "London"]) { (result) in
+    print(result!.list.count)
+}
+
+queryCityByName(cityName: "Paris") { (result) in
+    print(result!.name)
     
 }
 
