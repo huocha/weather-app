@@ -42,9 +42,11 @@ class SearchController: UIViewController, UITableViewDelegate, UITableViewDataSo
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell")
         
         if searching {
-            cell?.textLabel?.text = searchedCities[indexPath.row].name
+            cell?.textLabel?.text = "\(searchedCities[indexPath.row].name) , \(searchedCities[indexPath.row].country)"
+            cell?.detailTextLabel?.text = searchedCities[indexPath.row].country
         } else {
-            cell?.textLabel?.text = cities[indexPath.row].name
+            cell?.textLabel?.text = "\(cities[indexPath.row].name) , \(cities[indexPath.row].country)"
+            cell?.detailTextLabel?.text = cities[indexPath.row].country
         }
         
         return cell!
