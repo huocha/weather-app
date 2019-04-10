@@ -20,6 +20,8 @@ class SearchController: UIViewController, UITableViewDelegate, UITableViewDataSo
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // load the list of cities
         cities = CityData.loadJson()!
         // Do any additional setup after loading the view.
         
@@ -52,6 +54,13 @@ class SearchController: UIViewController, UITableViewDelegate, UITableViewDataSo
         return cell!
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let detailView = storyboard?.instantiateViewController(withIdentifier: "DetailController") as? DetailController
+        
+        detailView?.cityId = cities[indexPath.row].id
+        detailView?.cityName = cities[indexPath.row].name
+        self.navigationController?.pushViewController(detailView!, animated: true)
+    }
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         searchedCities = cities.filter({$0.name.lowercased().prefix(searchText.count) == searchText.lowercased()})
         
