@@ -15,6 +15,10 @@
 		3987D0A42257EF3100DA5FAA /* WeatherAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3987D0A32257EF3100DA5FAA /* WeatherAppTests.swift */; };
 		3987D0AF2257EF3100DA5FAA /* WeatherAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3987D0AE2257EF3100DA5FAA /* WeatherAppUITests.swift */; };
 		3987D0BD2257F19A00DA5FAA /* SearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3987D0BC2257F19A00DA5FAA /* SearchController.swift */; };
+		39E451DC225E456900D7CA3C /* Coord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39E451DB225E456900D7CA3C /* Coord.swift */; };
+		39E451DE225E457400D7CA3C /* CityData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39E451DD225E457400D7CA3C /* CityData.swift */; };
+		39E451E0225E457D00D7CA3C /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39E451DF225E457D00D7CA3C /* Constants.swift */; };
+		39E451E2225E45C300D7CA3C /* city.list.json in Resources */ = {isa = PBXBuildFile; fileRef = 39E451E1225E45C300D7CA3C /* city.list.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +53,10 @@
 		3987D0AE2257EF3100DA5FAA /* WeatherAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherAppUITests.swift; sourceTree = "<group>"; };
 		3987D0B02257EF3100DA5FAA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3987D0BC2257F19A00DA5FAA /* SearchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchController.swift; sourceTree = "<group>"; };
+		39E451DB225E456900D7CA3C /* Coord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coord.swift; sourceTree = "<group>"; };
+		39E451DD225E457400D7CA3C /* CityData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityData.swift; sourceTree = "<group>"; };
+		39E451DF225E457D00D7CA3C /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		39E451E1225E45C300D7CA3C /* city.list.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = city.list.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,6 +112,7 @@
 				3987D0952257EF3100DA5FAA /* Assets.xcassets */,
 				3987D0972257EF3100DA5FAA /* LaunchScreen.storyboard */,
 				3987D09A2257EF3100DA5FAA /* Info.plist */,
+				39E451D9225E454C00D7CA3C /* Model */,
 				3987D0BE2257F2D800DA5FAA /* View Controller */,
 			);
 			path = WeatherApp;
@@ -134,6 +143,17 @@
 				3987D0BC2257F19A00DA5FAA /* SearchController.swift */,
 			);
 			path = "View Controller";
+			sourceTree = "<group>";
+		};
+		39E451D9225E454C00D7CA3C /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				39E451E1225E45C300D7CA3C /* city.list.json */,
+				39E451DB225E456900D7CA3C /* Coord.swift */,
+				39E451DD225E457400D7CA3C /* CityData.swift */,
+				39E451DF225E457D00D7CA3C /* Constants.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -241,6 +261,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3987D0992257EF3100DA5FAA /* LaunchScreen.storyboard in Resources */,
+				39E451E2225E45C300D7CA3C /* city.list.json in Resources */,
 				3987D0962257EF3100DA5FAA /* Assets.xcassets in Resources */,
 				3987D0942257EF3000DA5FAA /* Main.storyboard in Resources */,
 			);
@@ -268,8 +289,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				3987D0912257EF3000DA5FAA /* ViewController.swift in Sources */,
+				39E451DC225E456900D7CA3C /* Coord.swift in Sources */,
+				39E451DE225E457400D7CA3C /* CityData.swift in Sources */,
 				3987D0BD2257F19A00DA5FAA /* SearchController.swift in Sources */,
 				3987D08F2257EF3000DA5FAA /* AppDelegate.swift in Sources */,
+				39E451E0225E457D00D7CA3C /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
