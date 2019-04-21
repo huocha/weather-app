@@ -25,6 +25,7 @@ class SearchController: UIViewController, UITableViewDelegate, UITableViewDataSo
         cities = CityData.loadJson()!
         // Do any additional setup after loading the view.
         
+        
     }
     
     override func didReceiveMemoryWarning() {

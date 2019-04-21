@@ -9,19 +9,72 @@
 import Foundation
 
 struct City: Codable {
-    let base: String
-    let clouds: Clouds
-    let cod: Int
-    let coord: Coord
-    let dt: Int
     let id: Int
     let name: String
+    let coord: Coord
     let weather: [CityWeather]
     let main: Main
-    let sys: CitySys
-    let visibility: Int
-    let wind: Wind
+    
+    static func queryCurrentWeather(matching query: [String: String], completion: @escaping (City?) -> Void) -> Void {
+        
+        let baseURL = URL(string: Const.baseUrl+"/weather?")!
+        
+        var query = query
+        query["APPID"] = Const.APPID
+        
+        let url = baseURL.withQueries(query)!
+        
+        let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
+            
+            let jsonDecoder = JSONDecoder()
+            if let data = data,
+                let results = try? jsonDecoder.decode(City.self, from: data) {
+                completion(results)
+                
+            }
+            else {
+                print(error ?? "Can not decode json")
+            }
+            
+        }
+        
+        task.resume()
+    }
 }
+
+struct CitySys: Codable {
+    let country: String
+    let id: Int
+    let message: Float
+    let sunset: Int
+    let sunrise: Int
+    let type: Int
+}
+
+struct Main: Codable {
+    let temp: Double
+    let pressure: Double
+    let humidity: Double
+    let temp_min: Double
+    let temp_max: Double
+}
+
+
+struct CityWeather: Codable {
+    let id: Int
+    let main: String?
+    let description: String
+    let icon: String
+}
+
+struct WeatherDetail: Codable {
+    let id: Int
+    let name: String
+    let coord: Coord
+    let weather: [CityWeather]
+    let main: Main
+}
+
 
 extension URL {
     func withQueries(_ queries: [String: String]) -> URL? {

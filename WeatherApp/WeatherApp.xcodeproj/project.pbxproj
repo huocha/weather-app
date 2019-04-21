@@ -24,11 +24,9 @@
 		39E451E8225E617800D7CA3C /* Rain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39E451E7225E617800D7CA3C /* Rain.swift */; };
 		39E451EA225E619600D7CA3C /* Snow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39E451E9225E619600D7CA3C /* Snow.swift */; };
 		39E451EC225E61A800D7CA3C /* Clouds.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39E451EB225E61A800D7CA3C /* Clouds.swift */; };
-		39E451EE225E808800D7CA3C /* CityWeather.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39E451ED225E808800D7CA3C /* CityWeather.swift */; };
 		39E451F0225E810000D7CA3C /* Detail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39E451EF225E810000D7CA3C /* Detail.swift */; };
 		39E451F4225E824300D7CA3C /* City.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39E451F3225E824300D7CA3C /* City.swift */; };
 		39E451F6225E83E300D7CA3C /* MainDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39E451F5225E83E300D7CA3C /* MainDetail.swift */; };
-		39E451F8225E84B000D7CA3C /* Sys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39E451F7225E84B000D7CA3C /* Sys.swift */; };
 		39E451FA225E8DDC00D7CA3C /* Converter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39E451F9225E8DDC00D7CA3C /* Converter.swift */; };
 /* End PBXBuildFile section */
 
@@ -73,11 +71,9 @@
 		39E451E7225E617800D7CA3C /* Rain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rain.swift; sourceTree = "<group>"; };
 		39E451E9225E619600D7CA3C /* Snow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Snow.swift; sourceTree = "<group>"; };
 		39E451EB225E61A800D7CA3C /* Clouds.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Clouds.swift; sourceTree = "<group>"; };
-		39E451ED225E808800D7CA3C /* CityWeather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityWeather.swift; sourceTree = "<group>"; };
 		39E451EF225E810000D7CA3C /* Detail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Detail.swift; sourceTree = "<group>"; };
 		39E451F3225E824300D7CA3C /* City.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = City.swift; sourceTree = "<group>"; };
 		39E451F5225E83E300D7CA3C /* MainDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainDetail.swift; sourceTree = "<group>"; };
-		39E451F7225E84B000D7CA3C /* Sys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sys.swift; sourceTree = "<group>"; };
 		39E451F9225E8DDC00D7CA3C /* Converter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Converter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -179,11 +175,9 @@
 				39E451E7225E617800D7CA3C /* Rain.swift */,
 				39E451E9225E619600D7CA3C /* Snow.swift */,
 				39E451EB225E61A800D7CA3C /* Clouds.swift */,
-				39E451ED225E808800D7CA3C /* CityWeather.swift */,
 				39E451EF225E810000D7CA3C /* Detail.swift */,
 				39E451F3225E824300D7CA3C /* City.swift */,
 				39E451F5225E83E300D7CA3C /* MainDetail.swift */,
-				39E451F7225E84B000D7CA3C /* Sys.swift */,
 				39E451F9225E8DDC00D7CA3C /* Converter.swift */,
 			);
 			path = Model;
@@ -324,7 +318,6 @@
 				39E451EA225E619600D7CA3C /* Snow.swift in Sources */,
 				3987D0912257EF3000DA5FAA /* ViewController.swift in Sources */,
 				39E451EC225E61A800D7CA3C /* Clouds.swift in Sources */,
-				39E451F8225E84B000D7CA3C /* Sys.swift in Sources */,
 				39E451E4225E567200D7CA3C /* DetailController.swift in Sources */,
 				39E451FA225E8DDC00D7CA3C /* Converter.swift in Sources */,
 				39E451DC225E456900D7CA3C /* Coord.swift in Sources */,
@@ -335,7 +328,6 @@
 				39E451F0225E810000D7CA3C /* Detail.swift in Sources */,
 				39E451E8225E617800D7CA3C /* Rain.swift in Sources */,
 				39E451E0225E457D00D7CA3C /* Constants.swift in Sources */,
-				39E451EE225E808800D7CA3C /* CityWeather.swift in Sources */,
 				39E451E6225E616F00D7CA3C /* Wind.swift in Sources */,
 				39E451F6225E83E300D7CA3C /* MainDetail.swift in Sources */,
 			);

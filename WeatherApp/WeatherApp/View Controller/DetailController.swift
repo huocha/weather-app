@@ -25,42 +25,22 @@ class DetailController: UIViewController {
         
         cityLabel.text = cityName
         
+        City.queryCurrentWeather(matching: [ "q" : cityName ]) { (result) in
+            
+            // Update the UI on the main thread
+            DispatchQueue.main.async() {
+                let celDegree = self.converter.convertKToC(kevin: (result?.main.temp)!)
+                self.weatherLabel.text = result?.weather[0].description
+                self.degreeLabel.text = "\(celDegree.toFixed(2))"
+            }
+            
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
-        queryCurrentWeather(matching: [ "q" : cityName ]) { (result) in
-            
-            print(result)
-            
-        }
     }
     
-    func queryCurrentWeather(matching query: [String: String], completion: @escaping (City?) -> Void) -> Void {
-        
-        let baseURL = URL(string: Const.baseUrl+"/weather?")!
-        
-        var query = query
-        query["APPID"] = Const.APPID
-        
-        let url = baseURL.withQueries(query)!
-        
-        let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
-            let jsonDecoder = JSONDecoder()
-            if let data = data,
-                let results = try? jsonDecoder.decode(City.self, from: data) {
-                
-                completion(results)
-            }
-            else {
-                print(error ?? "Can not decode json")
-            }
-            
-        }
-        
-        task.resume()
-    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
