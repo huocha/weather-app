@@ -30,8 +30,9 @@ class DetailController: UIViewController {
             // Update the UI on the main thread
             DispatchQueue.main.async() {
                 let celDegree = self.converter.convertKToC(kevin: (result?.main.temp)!)
+            
                 self.weatherLabel.text = result?.weather[0].description
-                self.degreeLabel.text = "\(celDegree.toFixed(2))"
+                self.degreeLabel.text = "\(celDegree)°"
             }
             
         }

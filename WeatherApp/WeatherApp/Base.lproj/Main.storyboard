@@ -108,8 +108,8 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Degree" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wOx-uW-2Jt">
-                                <rect key="frame" x="140" y="161" width="134" height="41"/>
-                                <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="30"/>
+                                <rect key="frame" x="140" y="161" width="174" height="82"/>
+                                <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="60"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -121,9 +121,11 @@
                             <constraint firstItem="TEr-Hr-sCO" firstAttribute="trailing" secondItem="wOx-uW-2Jt" secondAttribute="trailing" constant="140" id="Eba-9z-Uah"/>
                             <constraint firstItem="Nie-7W-Z87" firstAttribute="top" secondItem="TEr-Hr-sCO" secondAttribute="top" constant="30" id="FRX-es-Nfb"/>
                             <constraint firstItem="TEr-Hr-sCO" firstAttribute="trailing" secondItem="Rzr-B9-FyO" secondAttribute="trailing" constant="135" id="H9i-TB-pM4"/>
+                            <constraint firstItem="wOx-uW-2Jt" firstAttribute="leading" secondItem="TEr-Hr-sCO" secondAttribute="leading" constant="100" id="JQD-vQ-5vP"/>
                             <constraint firstItem="wOx-uW-2Jt" firstAttribute="top" secondItem="Rzr-B9-FyO" secondAttribute="bottom" constant="14.5" id="JWF-Ek-xFE"/>
                             <constraint firstItem="Nie-7W-Z87" firstAttribute="leading" secondItem="TEr-Hr-sCO" secondAttribute="leading" constant="100" id="aNP-Yn-dFS"/>
                             <constraint firstItem="wOx-uW-2Jt" firstAttribute="leading" secondItem="TEr-Hr-sCO" secondAttribute="leading" constant="140" id="cXX-uz-VPk"/>
+                            <constraint firstItem="TEr-Hr-sCO" firstAttribute="trailing" secondItem="wOx-uW-2Jt" secondAttribute="trailing" constant="100" id="nue-St-rSY"/>
                             <constraint firstItem="Rzr-B9-FyO" firstAttribute="leading" secondItem="TEr-Hr-sCO" secondAttribute="leading" constant="135" id="vrw-n9-dGT"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="TEr-Hr-sCO"/>

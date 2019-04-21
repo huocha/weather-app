@@ -6,6 +6,9 @@
 //  Copyright © 2019 jasmine. All rights reserved.
 //
 
+// #TODO: sort by alphabetic
+// #TODO: filter duplicate
+
 import Foundation
 
 struct CityData: Codable {

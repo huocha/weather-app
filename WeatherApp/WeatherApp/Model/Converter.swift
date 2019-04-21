@@ -16,7 +16,8 @@ extension Double {
 }
 
 class Converter {
-    func convertKToC(kevin: Double) -> Double {
-        return kevin - 273.15
+    func convertKToC(kevin: Double) -> Int {
+        let celsius = kevin - 273.15
+        return Int(celsius)
     }
 }
