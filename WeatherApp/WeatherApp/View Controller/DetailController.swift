@@ -15,9 +15,11 @@ class DetailController: UIViewController {
     @IBOutlet weak var weatherLabel: UILabel!
     @IBOutlet weak var degreeLabel: UILabel!
     
+    @IBOutlet weak var iconView: UIImageView!
     var cityName = ""
     var cityId = Int()
     var weatherByCity: City?
+    var icon = String()
     private var converter = Converter()
     
     override func viewDidLoad() {
@@ -33,6 +35,10 @@ class DetailController: UIViewController {
             
                 self.weatherLabel.text = result?.weather[0].description
                 self.degreeLabel.text = "\(celDegree)°"
+                
+                self.icon = result?.weather[0].icon ?? "default"
+                
+                self.iconView.image = UIImage(named: self.icon)
             }
             
         }

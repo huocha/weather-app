@@ -14,6 +14,10 @@ struct City: Codable {
     let coord: Coord
     let weather: [CityWeather]
     let main: Main
+    let wind: Wind
+    let clouds: Clouds
+    //let visibility: Int
+    //let sys: CitySys
     
     static func queryCurrentWeather(matching query: [String: String], completion: @escaping (City?) -> Void) -> Void {
         
@@ -29,6 +33,7 @@ struct City: Codable {
             let jsonDecoder = JSONDecoder()
             if let data = data,
                 let results = try? jsonDecoder.decode(City.self, from: data) {
+                print(results)
                 completion(results)
                 
             }
@@ -45,7 +50,7 @@ struct City: Codable {
 struct CitySys: Codable {
     let country: String
     let id: Int
-    let message: Float
+    let message: Double?
     let sunset: Int
     let sunrise: Int
     let type: Int
@@ -57,12 +62,17 @@ struct Main: Codable {
     let humidity: Double
     let temp_min: Double
     let temp_max: Double
+    let sea_level: Double
+    let grnd_level: Double
 }
 
 
 struct CityWeather: Codable {
+    enum WeatherType: String, Codable {
+        case Thunderstorm, Drizzle, Snow, Atmosphere, Clear, Clouds, Mist, Smoke, Haze, Dust, Fog, Sand, Ash, Squall, Tornado, Rain
+    }
     let id: Int
-    let main: String?
+    let main: WeatherType
     let description: String
     let icon: String
 }
