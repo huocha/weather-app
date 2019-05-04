@@ -225,18 +225,19 @@ func loadJson(filename fileName: String) -> [CityData]? {
 
 let cities = loadJson(filename: "city.list")
 
+for i in 0...60 {
 
+    queryCurrentWeather(matching: ["id": String((cities?[i].id)!) ]) { (result) in
+        print("\(i)")
+        print(result?.name)
+        print("\n")
+    }
 
-queryCurrentWeather(matching: ["id": String((cities?[i].id)!) ]) { (result) in
-    print("\(i)")
-    print(result?.name)
-    print("\n")
-}
-
-queryFiveDayWeather(matching: ["id" : String((cities?[i].id)!) ]) { (result) in
-    print("\(i)")
-    print(result?.city.id)
-    print("\n")
+    queryFiveDayWeather(matching: ["id" : String((cities?[i].id)!) ]) { (result) in
+        print("\(i)")
+        print(result?.city.id)
+        print("\n")
+    }
 }
 
 
