@@ -15,7 +15,7 @@ struct Sys: Codable {
 struct Detail: Codable {
     let dt: Int
     let main: Main
-    let weather: [CityWeather]
+    let weather: [Weather]
     let clouds: Clouds
     let wind: Wind
     let rain: Rain?

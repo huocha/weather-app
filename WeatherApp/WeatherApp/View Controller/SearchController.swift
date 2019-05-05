@@ -10,8 +10,8 @@ import Foundation
 
 class SearchController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate {
     
-    var cities = [CityData]()
-    var searchedCities = [CityData]()
+    var cities = [City]()
+    var searchedCities = [City]()
     var searching = false
     
     @IBOutlet weak var tbView: UITableView!
@@ -22,7 +22,7 @@ class SearchController: UIViewController, UITableViewDelegate, UITableViewDataSo
         super.viewDidLoad()
         
         // load the list of cities
-        cities = CityData.loadJson()!
+        cities = City.loadJson()!
         // Do any additional setup after loading the view.
         
         
