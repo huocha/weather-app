@@ -34,7 +34,7 @@ struct CurrentWeather: Codable {
             let jsonDecoder = JSONDecoder()
             if let data = data,
                 let results = try? jsonDecoder.decode(CurrentWeather.self, from: data) {
-                print(results)
+       
                 completion(results)
                 
             }

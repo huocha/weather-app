@@ -27,7 +27,7 @@ class DetailController: UIViewController {
         
         cityLabel.text = cityName
         
-        CurrentWeather.queryCurrentWeather(matching: [ "q" : cityName ]) { (result) in
+        CurrentWeather.queryCurrentWeather(matching: [ "id" : String(cityId) ]) { (result) in
             
             // Update the UI on the main thread
             DispatchQueue.main.async() {
