@@ -10,14 +10,15 @@ import Foundation
 
 struct City: Codable {
     let id: Int
+    let cod: Int
     let name: String
     let coord: Coord
     let weather: [CityWeather]
     let main: Main
     let wind: Wind
-    let clouds: Clouds
-    //let visibility: Int
-    //let sys: CitySys
+    let snow: Snow?
+    let rain: Rain?
+    let sys: CitySys
     
     static func queryCurrentWeather(matching query: [String: String], completion: @escaping (City?) -> Void) -> Void {
         
@@ -47,13 +48,21 @@ struct City: Codable {
     }
 }
 
+
 struct CitySys: Codable {
-    let country: String
+    let country: String?
+    let id: Int?
+    let message: Double
+    let type: Int?
+    let sunrise: Double
+    let sunset: Double
+}
+
+struct CityWeather: Codable {
     let id: Int
-    let message: Double?
-    let sunset: Int
-    let sunrise: Int
-    let type: Int
+    let main: String
+    let description: String
+    let icon: String
 }
 
 struct Main: Codable {
@@ -62,27 +71,27 @@ struct Main: Codable {
     let humidity: Double
     let temp_min: Double
     let temp_max: Double
-    let sea_level: Double
-    let grnd_level: Double
+    let temp_kf: Double?
+    let sea_level: Double?
+    let grnd_level: Double?
 }
 
 
-struct CityWeather: Codable {
-    enum WeatherType: String, Codable {
-        case Thunderstorm, Drizzle, Snow, Atmosphere, Clear, Clouds, Mist, Smoke, Haze, Dust, Fog, Sand, Ash, Squall, Tornado, Rain
-    }
-    let id: Int
-    let main: WeatherType
-    let description: String
-    let icon: String
-}
-
-struct WeatherDetail: Codable {
+struct CityDetail: Codable {
     let id: Int
     let name: String
     let coord: Coord
-    let weather: [CityWeather]
-    let main: Main
+    let country: String?
+    let population: Int?
+}
+
+
+struct WeatherDetail: Codable {
+    let cod: String
+    let message: Double
+    let cnt: Int
+    let list: [Detail]
+    let city: CityDetail
 }
 
 

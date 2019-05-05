@@ -9,19 +9,24 @@
 import Foundation
 
 struct Rain: Codable {
-    let rain: Double?
+    let one: Double?
+    let three: Double?
     
     enum CodingKeys: String, CodingKey {
-        case rain = "3h"
+        case one = "1h"
+        case three = "3h"
     }
     
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        self.rain = try container.decodeIfPresent(Double.self, forKey: .rain)
+        self.one = try container.decodeIfPresent(Double.self, forKey: .one)
+        self.three = try container.decodeIfPresent(Double.self, forKey: .three)
     }
+    
     
     func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encode(self.rain, forKey: .rain)
+        try container.encode(self.one, forKey: .one)
+        try container.encode(self.three, forKey: .three)
     }
 }
