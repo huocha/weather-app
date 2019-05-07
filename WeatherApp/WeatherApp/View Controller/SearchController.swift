@@ -5,24 +5,27 @@
 //  Created by Nguyen Dao Huong Tra on 05/04/2019.
 //  Copyright © 2019 jasmine. All rights reserved.
 //
+
 import UIKit
 import Foundation
 
+protocol FavoriteCityDelegate {
+    func addFavoriteCity(city: City)
+}
+
 class SearchController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate {
+    var delegate : FavoriteCityDelegate?
     
-    var cities = [City]()
-    var searchedCities = [City]()
+    var cities: [City] = []
+    var searchedCities: [City] = []
     var searching = false
     
     @IBOutlet weak var tbView: UITableView!
     @IBOutlet weak var searchBar: UISearchBar!
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // load the list of cities
-        cities = City.loadJson()!
+    
         // Do any additional setup after loading the view.
         
         
@@ -45,10 +48,10 @@ class SearchController: UIViewController, UITableViewDelegate, UITableViewDataSo
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell")
         
         if searching {
-            cell?.textLabel?.text = "\(searchedCities[indexPath.row].name) , \(searchedCities[indexPath.row].country)"
+            cell?.textLabel?.text = "\(searchedCities[indexPath.row].name)"
             cell?.detailTextLabel?.text = searchedCities[indexPath.row].country
         } else {
-            cell?.textLabel?.text = "\(cities[indexPath.row].name) , \(cities[indexPath.row].country)"
+            cell?.textLabel?.text = "\(cities[indexPath.row].name)"
             cell?.detailTextLabel?.text = cities[indexPath.row].country
         }
         
@@ -56,19 +59,19 @@ class SearchController: UIViewController, UITableViewDelegate, UITableViewDataSo
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let detailView = storyboard?.instantiateViewController(withIdentifier: "DetailController") as? DetailController
+        var addedCity:City?
         
         if searching {
-            detailView?.cityId = searchedCities[indexPath.row].id
-            detailView?.cityName = searchedCities[indexPath.row].name
+            addedCity = searchedCities[indexPath.row]
         }
         else {
-            detailView?.cityId = cities[indexPath.row].id
-            detailView?.cityName = cities[indexPath.row].name
+            addedCity = cities[indexPath.row]
         }
+
+        delegate?.addFavoriteCity(city: addedCity!)
+
         
-        
-        self.navigationController?.pushViewController(detailView!, animated: true)
+        self.navigationController?.popViewController(animated: true)
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {

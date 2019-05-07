@@ -16,8 +16,8 @@ class DetailController: UIViewController {
     @IBOutlet weak var degreeLabel: UILabel!
     
     @IBOutlet weak var iconView: UIImageView!
-    var cityName = ""
-    var cityId = Int()
+    var cityName: String?
+    var cityId: Int?
     var weatherByCity: CurrentWeather?
     var icon = String()
     private var converter = Converter()
@@ -27,7 +27,7 @@ class DetailController: UIViewController {
         
         cityLabel.text = cityName
         
-        CurrentWeather.queryCurrentWeather(matching: [ "id" : String(cityId) ]) { (result) in
+        CurrentWeather.queryCurrentWeather(matching: [ "id" : String(cityId!) ]) { (result) in
             
             // Update the UI on the main thread
             DispatchQueue.main.async() {

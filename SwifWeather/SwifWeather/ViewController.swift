@@ -1,8 +1,8 @@
 //
 //  ViewController.swift
-//  WeatherApp
+//  SwifWeather
 //
-//  Created by Nguyen Dao Huong Tra on 05/04/2019.
+//  Created by Nguyen Dao Huong Tra on 05/05/2019.
 //  Copyright © 2019 jasmine. All rights reserved.
 //
 
