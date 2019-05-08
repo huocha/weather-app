@@ -25,10 +25,7 @@ class SearchController: UIViewController, UITableViewDelegate, UITableViewDataSo
     
     override func viewDidLoad() {
         super.viewDidLoad()
-    
         // Do any additional setup after loading the view.
-        
-        
     }
     
     override func didReceiveMemoryWarning() {
@@ -40,7 +37,7 @@ class SearchController: UIViewController, UITableViewDelegate, UITableViewDataSo
         if searching {
             return searchedCities.count
         } else {
-            return cities.count
+            return 0
         }
     }
     
@@ -50,11 +47,7 @@ class SearchController: UIViewController, UITableViewDelegate, UITableViewDataSo
         if searching {
             cell?.textLabel?.text = "\(searchedCities[indexPath.row].name)"
             cell?.detailTextLabel?.text = searchedCities[indexPath.row].country
-        } else {
-            cell?.textLabel?.text = "\(cities[indexPath.row].name)"
-            cell?.detailTextLabel?.text = cities[indexPath.row].country
         }
-        
         return cell!
     }
     
@@ -64,13 +57,9 @@ class SearchController: UIViewController, UITableViewDelegate, UITableViewDataSo
         if searching {
             addedCity = searchedCities[indexPath.row]
         }
-        else {
-            addedCity = cities[indexPath.row]
-        }
-
+       
         delegate?.addFavoriteCity(city: addedCity!)
 
-        
         self.navigationController?.popViewController(animated: true)
     }
     

@@ -44,15 +44,15 @@ class FavoriteController: UIViewController, UITableViewDelegate, UITableViewData
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let detailView = storyboard?.instantiateViewController(withIdentifier: "DetailController") as? DetailController
         
-        detailView?.cityId = cities?[indexPath.row].id
-        detailView?.cityName = cities?[indexPath.row].name
+        detailView?.cityId = addedFavoriteCities[indexPath.row].id
+        detailView?.cityName = addedFavoriteCities[indexPath.row].name
         
         self.navigationController?.pushViewController(detailView!, animated: true)
         
     }
     
     func addFavoriteCity(city: City){
-        print(addedFavoriteCities.count)
+        print(city)
         self.addedFavoriteCities.append(city)
         tbView.reloadData()
     }
