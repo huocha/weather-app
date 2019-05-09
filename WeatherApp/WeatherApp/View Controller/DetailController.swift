@@ -123,6 +123,17 @@ class DetailController: UIViewController, UICollectionViewDelegate, UICollection
 
         cell.dayTbViewLabel.text = weatherInWeek[indexPath.row].dt_txt.toDate.getDayOfWeek
         
+        var icons = weatherInWeek.map({ $0.weather[0].icon + "-small" })
+        var maxDegree = weatherInWeek.map({ self.converter.convertKToC(kevin: ($0.main.temp_max)) })
+        
+        var minDegree = weatherInWeek.map({ self.converter.convertKToC(kevin: ($0.main.temp_min)) })
+        
+        cell.iconImageTbViewLabel.image = UIImage(named: icons[indexPath.row])
+        
+        cell.maxDegreeTbViewLabel.text = "\(maxDegree[indexPath.row])°"
+        
+        cell.minDegreeTbViewLabel.text = "\(minDegree[indexPath.row])°"
+        
         return cell
     }
     
