@@ -26,9 +26,14 @@ class DetailController: UIViewController {
         super.viewDidLoad()
         
         cityLabel.text = cityName
+        
         cityLabel.adjustsFontSizeToFitWidth = true
         cityLabel.minimumScaleFactor = 0.2
-        cityLabel.numberOfLines = 1 // or 1
+        cityLabel.numberOfLines = 1
+        
+        weatherLabel.adjustsFontSizeToFitWidth = true
+        weatherLabel.minimumScaleFactor = 0.2
+        weatherLabel.numberOfLines = 2
         
         CurrentWeather.queryCurrentWeather(matching: [ "id" : String(cityId) ]) { (result) in
   
