@@ -62,8 +62,11 @@ class DetailController: UIViewController, UICollectionViewDelegate, UICollection
         }
         
         let flowLayout = UICollectionViewFlowLayout()
+        flowLayout.itemSize = CGSize(width: 82, height: 130)
+        flowLayout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        
         flowLayout.scrollDirection = .horizontal
-        flowLayout.minimumInteritemSpacing = 4.0
+        flowLayout.minimumInteritemSpacing = 0.0
         weatherDetailCollectionView.collectionViewLayout = flowLayout
         
         FiveDaysWeather.queryFiveDayWeather(matching: [ "id" : String(cityId) ]) { (result) in
