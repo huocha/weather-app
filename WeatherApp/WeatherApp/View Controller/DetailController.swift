@@ -8,12 +8,13 @@
 import UIKit
 import Foundation
 
-class DetailController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
+class DetailController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource,  UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet weak var cityLabel: UILabel!
     @IBOutlet weak var weatherLabel: UILabel!
     @IBOutlet weak var degreeLabel: UILabel!
     @IBOutlet weak var weatherDetailCollectionView: UICollectionView!
+    @IBOutlet weak var weatherInWeekTableView: UITableView!
     @IBOutlet weak var iconView: UIImageView!
     @IBOutlet weak var minDegreeLabel: UILabel!
     @IBOutlet weak var maxDegreeLabel: UILabel!
@@ -22,7 +23,9 @@ class DetailController: UIViewController, UICollectionViewDelegate, UICollection
     var cityName: String!
     var cityId: Int!
     var icon = String()
-    var detailList: [Detail] = []
+    var weatherInDay: [Detail] = []
+    var weatherInWeek: [Detail] = []
+    
     private var converter = Converter()
     var currentDate = Date()
    
@@ -38,7 +41,6 @@ class DetailController: UIViewController, UICollectionViewDelegate, UICollection
         weatherLabel.adjustsFontSizeToFitWidth = true
         weatherLabel.minimumScaleFactor = 0.2
         weatherLabel.numberOfLines = 2
-        
         
         currentDayLabel.text = currentDate.getDayOfWeek
         
@@ -62,7 +64,7 @@ class DetailController: UIViewController, UICollectionViewDelegate, UICollection
         }
         
         let flowLayout = UICollectionViewFlowLayout()
-        flowLayout.itemSize = CGSize(width: 82, height: 130)
+        flowLayout.itemSize = CGSize(width: 75, height: 100)
         flowLayout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         
         flowLayout.scrollDirection = .horizontal
@@ -70,11 +72,15 @@ class DetailController: UIViewController, UICollectionViewDelegate, UICollection
         weatherDetailCollectionView.collectionViewLayout = flowLayout
         
         FiveDaysWeather.queryFiveDayWeather(matching: [ "id" : String(cityId) ]) { (result) in
-
-            self.detailList = Array(result?.list.prefix(8) ?? [])
+            
+            // #TODO: group by date and find min max temp
+            self.weatherInWeek = result?.list ?? []
+            self.weatherInDay = Array(result?.list.prefix(8) ?? [])
             
             // Update the UI on the main thread
             DispatchQueue.main.async() {
+                
+                self.weatherInWeekTableView.reloadData()
                 self.weatherDetailCollectionView.reloadData()
             }
             
@@ -90,7 +96,7 @@ class DetailController: UIViewController, UICollectionViewDelegate, UICollection
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return detailList.count
+        return weatherInDay.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -98,14 +104,26 @@ class DetailController: UIViewController, UICollectionViewDelegate, UICollection
         
         // #TODO: add missing time for example 9h -> 12h should be 9h 10h 11h 12h
         
-        var degrees = detailList.map({ self.converter.convertKToC(kevin: ($0.main.temp)) })
-        var icons = detailList.map({ $0.weather[0].icon + "-small" })
+        var degrees = weatherInDay.map({ self.converter.convertKToC(kevin: ($0.main.temp)) })
+        var icons = weatherInDay.map({ $0.weather[0].icon + "-small" })
         
         cell.degreeLabel.text = "\(degrees[indexPath.row])°"
         cell.iconImage.image = UIImage(named: icons[indexPath.row])
         
-        
         return cell
         
     }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return weatherInWeek.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "weatherDaysTableCell", for: indexPath) as! WeatherDaysTableCell
+
+        cell.dayTbViewLabel.text = weatherInWeek[indexPath.row].dt_txt.toDate.getDayOfWeek
+        
+        return cell
+    }
+    
 }
