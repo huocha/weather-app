@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		39142981227EEB5D0067FE57 /* FiveDaysWeather.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39142980227EEB5D0067FE57 /* FiveDaysWeather.swift */; };
 		39142983227EEC8F0067FE57 /* City.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39142982227EEC8F0067FE57 /* City.swift */; };
+		3946E337228495D200E4A22A /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3946E336228495D200E4A22A /* Date.swift */; };
 		3987D08F2257EF3000DA5FAA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3987D08E2257EF3000DA5FAA /* AppDelegate.swift */; };
 		3987D0912257EF3000DA5FAA /* FavoriteController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3987D0902257EF3000DA5FAA /* FavoriteController.swift */; };
 		3987D0942257EF3000DA5FAA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3987D0922257EF3000DA5FAA /* Main.storyboard */; };
@@ -54,6 +55,7 @@
 /* Begin PBXFileReference section */
 		39142980227EEB5D0067FE57 /* FiveDaysWeather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiveDaysWeather.swift; sourceTree = "<group>"; };
 		39142982227EEC8F0067FE57 /* City.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = City.swift; sourceTree = "<group>"; };
+		3946E336228495D200E4A22A /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
 		3987D08B2257EF3000DA5FAA /* WeatherApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeatherApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3987D08E2257EF3000DA5FAA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3987D0902257EF3000DA5FAA /* FavoriteController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteController.swift; sourceTree = "<group>"; };
@@ -191,6 +193,7 @@
 				39E451F9225E8DDC00D7CA3C /* Converter.swift */,
 				39142980227EEB5D0067FE57 /* FiveDaysWeather.swift */,
 				39142982227EEC8F0067FE57 /* City.swift */,
+				3946E336228495D200E4A22A /* Date.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -344,6 +347,7 @@
 				39E451E8225E617800D7CA3C /* Rain.swift in Sources */,
 				39E451E0225E457D00D7CA3C /* Constants.swift in Sources */,
 				39E451E6225E616F00D7CA3C /* Wind.swift in Sources */,
+				3946E337228495D200E4A22A /* Date.swift in Sources */,
 				39142983227EEC8F0067FE57 /* City.swift in Sources */,
 				39E451F6225E83E300D7CA3C /* Main.swift in Sources */,
 			);
