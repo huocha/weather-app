@@ -29,6 +29,7 @@
 		39E451F4225E824300D7CA3C /* CurrentWeather.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39E451F3225E824300D7CA3C /* CurrentWeather.swift */; };
 		39E451F6225E83E300D7CA3C /* Main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39E451F5225E83E300D7CA3C /* Main.swift */; };
 		39E451FA225E8DDC00D7CA3C /* Converter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39E451F9225E8DDC00D7CA3C /* Converter.swift */; };
+		39F47395228418D40049F81F /* FavoriteCityCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39F47394228418D40049F81F /* FavoriteCityCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -77,6 +78,7 @@
 		39E451F3225E824300D7CA3C /* CurrentWeather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentWeather.swift; sourceTree = "<group>"; };
 		39E451F5225E83E300D7CA3C /* Main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Main.swift; sourceTree = "<group>"; };
 		39E451F9225E8DDC00D7CA3C /* Converter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Converter.swift; sourceTree = "<group>"; };
+		39F47394228418D40049F81F /* FavoriteCityCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteCityCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -162,6 +164,7 @@
 				3987D0902257EF3000DA5FAA /* FavoriteController.swift */,
 				3987D0BC2257F19A00DA5FAA /* SearchController.swift */,
 				39E451E3225E567200D7CA3C /* DetailController.swift */,
+				39F47394228418D40049F81F /* FavoriteCityCell.swift */,
 			);
 			path = "View Controller";
 			sourceTree = "<group>";
@@ -321,6 +324,7 @@
 				39E451EA225E619600D7CA3C /* Snow.swift in Sources */,
 				3987D0912257EF3000DA5FAA /* FavoriteController.swift in Sources */,
 				39E451EC225E61A800D7CA3C /* Clouds.swift in Sources */,
+				39F47395228418D40049F81F /* FavoriteCityCell.swift in Sources */,
 				39E451E4225E567200D7CA3C /* DetailController.swift in Sources */,
 				39E451FA225E8DDC00D7CA3C /* Converter.swift in Sources */,
 				39E451DC225E456900D7CA3C /* Coord.swift in Sources */,

@@ -9,7 +9,9 @@ import UIKit
 import Foundation
 
 class FavoriteController: UIViewController, UITableViewDelegate, UITableViewDataSource, FavoriteCityDelegate {
-    
+
+    @IBOutlet weak var tableView: UITableView!
+
     var addedFavoriteCities: [City] = []
     var cities: [City]?
     
@@ -34,9 +36,12 @@ class FavoriteController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell")
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell") as? FavoriteCityCell
         
-        cell?.textLabel?.text = "\(addedFavoriteCities[indexPath.row].name)"
+        cell?.cityLabel.text = "\(addedFavoriteCities[indexPath.row].name)"
+        cell?.cityLabel.sizeToFit()
+        
+        cell?.degreeLabel.text = "\(addedFavoriteCities[indexPath.row].id)"
         
         return cell!
     }
