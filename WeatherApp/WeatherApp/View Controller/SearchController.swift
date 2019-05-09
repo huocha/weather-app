@@ -46,6 +46,8 @@ class SearchController: UIViewController, UITableViewDelegate, UITableViewDataSo
         
         if searching {
             cell?.textLabel?.text = "\(searchedCities[indexPath.row].name)"
+            
+            // #TODO: show the full country name
             cell?.detailTextLabel?.text = searchedCities[indexPath.row].country
         }
         return cell!
@@ -66,6 +68,7 @@ class SearchController: UIViewController, UITableViewDelegate, UITableViewDataSo
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         searchedCities = cities.filter({$0.name.lowercased().prefix(searchText.count) == searchText.lowercased()})
         
+        // #TODO: delay search to enhance the perf
         searching = true
         tbView.reloadData()
     }

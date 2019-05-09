@@ -50,6 +50,8 @@ class FavoriteController: UIViewController, UITableViewDelegate, UITableViewData
         let detailView = storyboard?.instantiateViewController(withIdentifier: "DetailController") as? DetailController
         
         detailView?.cityId = addedFavoriteCities[indexPath.row].id
+        // #TODO: query weather each time
+        
         detailView?.cityName = addedFavoriteCities[indexPath.row].name
         
         self.navigationController?.pushViewController(detailView!, animated: true)
@@ -57,7 +59,6 @@ class FavoriteController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func addFavoriteCity(city: City){
-        print(city)
         self.addedFavoriteCities.append(city)
         tbView.reloadData()
     }

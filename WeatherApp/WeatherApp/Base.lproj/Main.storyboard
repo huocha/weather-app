@@ -201,14 +201,66 @@
                                 <color key="textColor" red="0.98039215690000003" green="0.41960784309999999" blue="0.41960784309999999" alpha="1" colorSpace="custom" customColorSpace="adobeRGB1998"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="aRo-kh-h8d">
+                                <rect key="frame" x="0.0" y="335" width="414" height="103"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="2ue-B6-QRb">
+                                    <size key="itemSize" width="82" height="96"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="weatherCell" id="p0K-1w-vJu" customClass="WeatherCollectionViewCell" customModule="WeatherApp" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="3.5" width="82" height="96"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                            <rect key="frame" x="0.0" y="0.0" width="82" height="96"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="10" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pVZ-nr-YuD">
+                                                    <rect key="frame" x="26" y="67" width="20" height="24"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
+                                                    <color key="textColor" red="0.074509803920000006" green="0.16078431369999999" blue="0.40784313729999999" alpha="1" colorSpace="custom" customColorSpace="adobeRGB1998"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SPT-76-yoQ">
+                                                    <rect key="frame" x="29" y="38" width="30" height="20.5"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="11h" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P6K-3O-CmI">
+                                                    <rect key="frame" x="26" y="7" width="30" height="24"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
+                                                    <color key="textColor" red="0.25098039220000001" green="0.26274509800000001" blue="0.2666666667" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </view>
+                                        <connections>
+                                            <outlet property="degreeLabel" destination="pVZ-nr-YuD" id="CIi-pL-GBM"/>
+                                            <outlet property="iconImage" destination="SPT-76-yoQ" id="dJM-Qv-hMN"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="FYu-FQ-f6u" id="0Ds-K3-Jbo"/>
+                                    <outlet property="delegate" destination="FYu-FQ-f6u" id="3dq-YA-iAe"/>
+                                </connections>
+                            </collectionView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="aRo-kh-h8d" firstAttribute="top" secondItem="lxI-Go-iK0" secondAttribute="bottom" constant="56" id="0St-Bv-uWB"/>
                             <constraint firstItem="TEr-Hr-sCO" firstAttribute="trailing" secondItem="Rzr-B9-FyO" secondAttribute="trailing" constant="70" id="4AZ-Kb-MVl"/>
                             <constraint firstItem="TEr-Hr-sCO" firstAttribute="bottom" secondItem="lxI-Go-iK0" secondAttribute="bottom" constant="583" id="AIT-f1-mlq"/>
                             <constraint firstItem="lxI-Go-iK0" firstAttribute="leading" secondItem="TEr-Hr-sCO" secondAttribute="leading" constant="70" id="HIS-6f-aaG"/>
+                            <constraint firstItem="aRo-kh-h8d" firstAttribute="leading" secondItem="TEr-Hr-sCO" secondAttribute="leading" id="IWP-a9-laV"/>
+                            <constraint firstItem="aRo-kh-h8d" firstAttribute="trailing" secondItem="TEr-Hr-sCO" secondAttribute="trailing" id="L9b-yo-LL9"/>
                             <constraint firstItem="Rzr-B9-FyO" firstAttribute="leading" secondItem="lxI-Go-iK0" secondAttribute="trailing" constant="48" id="M55-sT-gD0"/>
                             <constraint firstItem="TEr-Hr-sCO" firstAttribute="trailing" secondItem="wOx-uW-2Jt" secondAttribute="trailing" constant="70" id="VsQ-p4-9uO"/>
+                            <constraint firstItem="TEr-Hr-sCO" firstAttribute="bottom" secondItem="aRo-kh-h8d" secondAttribute="bottom" constant="424" id="W1U-fW-5UW"/>
                             <constraint firstItem="wOx-uW-2Jt" firstAttribute="leading" secondItem="lxI-Go-iK0" secondAttribute="trailing" constant="48" id="WOw-bm-m74"/>
                             <constraint firstItem="Rzr-B9-FyO" firstAttribute="top" secondItem="Nie-7W-Z87" secondAttribute="bottom" constant="30" id="eGW-iK-yhH"/>
                             <constraint firstItem="Nie-7W-Z87" firstAttribute="top" secondItem="TEr-Hr-sCO" secondAttribute="top" constant="30" id="mrT-xu-H46"/>
@@ -223,6 +275,7 @@
                         <outlet property="cityLabel" destination="Nie-7W-Z87" id="OIb-kZ-fjF"/>
                         <outlet property="degreeLabel" destination="wOx-uW-2Jt" id="aoh-wn-XGG"/>
                         <outlet property="iconView" destination="lxI-Go-iK0" id="dvN-Bq-seE"/>
+                        <outlet property="weatherDetailCollectionView" destination="aRo-kh-h8d" id="mj0-eO-zl7"/>
                         <outlet property="weatherLabel" destination="Rzr-B9-FyO" id="ggE-x1-Oxb"/>
                     </connections>
                 </viewController>
