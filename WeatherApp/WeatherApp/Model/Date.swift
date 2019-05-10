@@ -17,7 +17,6 @@ extension String {
 }
 
 
-
 extension Date {
     var getDayOfWeek: String {
         let dateFormatter = DateFormatter()
@@ -27,3 +26,4 @@ extension Date {
         return dateFormatter.string(from: self)
     }
 }
+

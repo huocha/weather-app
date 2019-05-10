@@ -13,6 +13,11 @@ extension Double {
         let multiplier = pow(10, Double(fractionDigits))
         return Darwin.round(self * multiplier)/multiplier
     }
+    
+    var toUTCDate: Date {
+        return Date(timeIntervalSince1970: self)
+    }
+    
 }
 
 class Converter {

@@ -20,7 +20,7 @@ class DetailController: UIViewController, UICollectionViewDelegate, UICollection
     @IBOutlet weak var maxDegreeLabel: UILabel!
     @IBOutlet weak var currentDayLabel: UILabel!
     @IBOutlet weak var headerView: UIView!
-    
+    @IBOutlet var footerView: UICollectionView!
     
     var cityName: String!
     var cityId: Int!
@@ -81,7 +81,6 @@ class DetailController: UIViewController, UICollectionViewDelegate, UICollection
             
             // Update the UI on the main thread
             DispatchQueue.main.async() {
-                
                 self.weatherInWeekTableView.reloadData()
                 self.weatherDetailCollectionView.reloadData()
             }
@@ -89,6 +88,7 @@ class DetailController: UIViewController, UICollectionViewDelegate, UICollection
         }
         
         self.weatherInWeekTableView.tableHeaderView = headerView
+        self.weatherInWeekTableView.tableFooterView = footerView
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -100,24 +100,59 @@ class DetailController: UIViewController, UICollectionViewDelegate, UICollection
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return weatherInDay.count
+        
+        if (collectionView == weatherDetailCollectionView) {
+            return weatherInDay.count
+        }
+        else {
+            return 8
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "weatherCell", for: indexPath) as! WeatherCollectionViewCell
-        
-        // #TODO: add missing time for example 9h -> 12h should be 9h 10h 11h 12h
-        
-        var degrees = weatherInDay.map({ self.converter.convertKToC(kevin: ($0.main.temp)) })
-        var icons = weatherInDay.map({ $0.weather[0].icon + "-small" })
-        
-        cell.degreeLabel.text = "\(degrees[indexPath.row])°"
-        cell.iconImage.image = UIImage(named: icons[indexPath.row])
-        
-        return cell
+        if (collectionView == weatherDetailCollectionView){
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "weatherCell", for: indexPath) as! WeatherCollectionViewCell
+            
+            // #TODO: add missing time for example 9h -> 12h should be 9h 10h 11h 12h
+            
+            var degrees = weatherInDay.map({ self.converter.convertKToC(kevin: ($0.main.temp)) })
+            var icons = weatherInDay.map({ $0.weather[0].icon + "-small" })
+            
+            cell.degreeLabel.text = "\(degrees[indexPath.row])°"
+            cell.iconImage.image = UIImage(named: icons[indexPath.row])
+            
+            return cell
+        }
+        else  {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "footerCollectionCell", for: indexPath) as! FooterCollectionCell
+            
+            var keys = ["Sunrise", "Sunset", "Rain", "Humidity", "Wind", "Feel", "Pressure", "Visibility"]
+            var values = ["6:13", "10:00", "Rain", "Humidity", "Wind", "Feel", "Pressure", "Visibility"]
+            
+            cell.descriptionKeyLabel.text = "\(keys[indexPath.row])"
+            cell.valueLabel.text = "\(values[indexPath.row])"
+            
+            return cell
+        }
         
     }
     
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        
+        if (collectionView == weatherDetailCollectionView){
+            // let height = self.weatherDetailCollectionView.frame.size.height
+            let width = self.weatherDetailCollectionView.frame.size.width
+
+            return CGSize(width: width/8, height: 100)
+        }
+        else {
+            // let height = self.footerView.frame.size.height
+            let width = self.footerView.frame.size.width
+
+            return CGSize(width: width/2 - 10, height: 100)
+        }
+        
+    }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return weatherInWeek.count
     }
