@@ -10,17 +10,18 @@ import Foundation
 
 class FavoriteController: UIViewController, UITableViewDelegate, UITableViewDataSource, FavoriteCityDelegate {
 
-    @IBOutlet weak var tableView: UITableView!
-
+    @IBOutlet weak var tbView: UITableView!
     var addedFavoriteCities: [City] = []
     var cities: [City]?
-    
-    @IBOutlet weak var tbView: UITableView!
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // load the list of cities
         cities = City.loadJson()
+        
+        let savedCityId = Defaults.getIds()
+        addedFavoriteCities = cities?.filter({ savedCityId.contains($0.id) }) ?? []
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -60,8 +61,11 @@ class FavoriteController: UIViewController, UITableViewDelegate, UITableViewData
     
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let delete = UIContextualAction(style: .destructive, title: "Delete") { (action, sourceView, completionHandler) in
+            
+            Defaults.remove(id: self.addedFavoriteCities[indexPath.row].id)
             self.addedFavoriteCities.remove(at: indexPath.row)
-            self.tableView.reloadData()
+            self.tbView.reloadData()
+            
             completionHandler(true)
         }
         
@@ -72,6 +76,8 @@ class FavoriteController: UIViewController, UITableViewDelegate, UITableViewData
     
     func addFavoriteCity(city: City){
         self.addedFavoriteCities.append(city)
+        
+        Defaults.save(id: city.id)
         tbView.reloadData()
     }
     
