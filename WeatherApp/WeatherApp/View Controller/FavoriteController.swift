@@ -61,6 +61,7 @@ class FavoriteController: UIViewController, UITableViewDelegate, UITableViewData
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let delete = UIContextualAction(style: .destructive, title: "Delete") { (action, sourceView, completionHandler) in
             self.addedFavoriteCities.remove(at: indexPath.row)
+            self.tableView.reloadData()
             completionHandler(true)
         }
         

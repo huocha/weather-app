@@ -19,6 +19,8 @@ class DetailController: UIViewController, UICollectionViewDelegate, UICollection
     @IBOutlet weak var minDegreeLabel: UILabel!
     @IBOutlet weak var maxDegreeLabel: UILabel!
     @IBOutlet weak var currentDayLabel: UILabel!
+    @IBOutlet weak var headerView: UIView!
+    
     
     var cityName: String!
     var cityId: Int!
@@ -85,6 +87,8 @@ class DetailController: UIViewController, UICollectionViewDelegate, UICollection
             }
             
         }
+        
+        self.weatherInWeekTableView.tableHeaderView = headerView
     }
     
     override func viewWillAppear(_ animated: Bool) {
