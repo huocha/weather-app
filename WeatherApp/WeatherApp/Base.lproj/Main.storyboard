@@ -293,7 +293,7 @@
                                         <constraint firstAttribute="width" constant="100" id="3q7-Xn-6mN"/>
                                     </constraints>
                                 </imageView>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" misplaced="YES" text="Weather" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rzr-B9-FyO">
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Weather" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rzr-B9-FyO">
                                     <rect key="frame" x="134" y="15" width="135" height="25"/>
                                     <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="18"/>
                                     <color key="textColor" red="0.63137254901960782" green="0.66274509803921566" blue="0.76470588235294112" alpha="1" colorSpace="custom" customColorSpace="adobeRGB1998"/>
@@ -310,6 +310,7 @@
                             <constraints>
                                 <constraint firstItem="lxI-Go-iK0" firstAttribute="leading" secondItem="fGo-Hz-z7d" secondAttribute="leading" constant="20" id="2sh-Cz-0RG"/>
                                 <constraint firstAttribute="trailing" secondItem="wOx-uW-2Jt" secondAttribute="trailing" id="8nQ-pB-5Qp"/>
+                                <constraint firstItem="Rzr-B9-FyO" firstAttribute="leading" secondItem="lxI-Go-iK0" secondAttribute="trailing" constant="14" id="BU1-A0-UNl"/>
                                 <constraint firstItem="wOx-uW-2Jt" firstAttribute="top" secondItem="Rzr-B9-FyO" secondAttribute="bottom" constant="2" id="DEc-QH-k5X"/>
                                 <constraint firstAttribute="trailing" secondItem="Rzr-B9-FyO" secondAttribute="trailing" constant="5" id="Xp6-QO-1VI"/>
                                 <constraint firstItem="Rzr-B9-FyO" firstAttribute="top" secondItem="fGo-Hz-z7d" secondAttribute="top" constant="15" id="c2s-9J-tLC"/>
@@ -389,8 +390,8 @@
                             <color key="textColor" red="0.98039215690000003" green="0.41960784309999999" blue="0.41960784309999999" alpha="1" colorSpace="custom" customColorSpace="adobeRGB1998"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" verticalCompressionResistancePriority="751" misplaced="YES" text="City name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nie-7W-Z87">
-                            <rect key="frame" x="0.0" y="20" width="414" height="39"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" verticalCompressionResistancePriority="751" text="City name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nie-7W-Z87">
+                            <rect key="frame" x="0.0" y="20" width="414" height="41"/>
                             <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="30"/>
                             <color key="textColor" red="0.074509803921568626" green="0.16078431372549018" blue="0.40784313725490196" alpha="1" colorSpace="custom" customColorSpace="adobeRGB1998"/>
                             <nil key="highlightedColor"/>
