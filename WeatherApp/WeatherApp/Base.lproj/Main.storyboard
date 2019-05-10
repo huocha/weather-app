@@ -19,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="N4L-AY-oRM">
-                                <rect key="frame" x="0.0" y="149" width="414" height="713"/>
+                                <rect key="frame" x="0.0" y="153" width="414" height="709"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" rowHeight="82" id="oxK-tB-sBh" customClass="FavoriteCityCell" customModule="WeatherApp" customModuleProvider="target">
@@ -63,33 +63,40 @@
                                     <outlet property="delegate" destination="cNH-f5-znv" id="gws-RB-F3B"/>
                                 </connections>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kLX-ia-vs8">
-                                <rect key="frame" x="184" y="119" width="46" height="30"/>
-                                <state key="normal" title="Button"/>
-                                <connections>
-                                    <segue destination="BYZ-38-t0r" kind="show" id="Ea1-W5-Io9"/>
-                                </connections>
-                            </button>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Mdi-pS-qmv">
-                                <rect key="frame" x="-230" y="75" width="414" height="44"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                                <items>
-                                    <barButtonItem title="Item" id="3QG-X0-Ohs"/>
-                                </items>
-                            </toolbar>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hxr-UC-B5t">
+                                <rect key="frame" x="0.0" y="88" width="414" height="0.0"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Favorite Cities" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RmF-oM-JFT">
+                                <rect key="frame" x="20" y="113" width="198" height="35"/>
+                                <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="30"/>
+                                <color key="textColor" red="0.074509803920000006" green="0.16078431369999999" blue="0.40784313729999999" alpha="1" colorSpace="custom" customColorSpace="adobeRGB1998"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="N4L-AY-oRM" firstAttribute="top" secondItem="hxr-UC-B5t" secondAttribute="bottom" constant="65" id="0QF-Ho-OHv"/>
+                            <constraint firstItem="hxr-UC-B5t" firstAttribute="top" secondItem="X6M-P9-Hvs" secondAttribute="top" id="DxI-wZ-Q6b"/>
+                            <constraint firstItem="RmF-oM-JFT" firstAttribute="top" secondItem="X6M-P9-Hvs" secondAttribute="top" constant="25" id="HPj-ZG-3tn"/>
                             <constraint firstItem="X6M-P9-Hvs" firstAttribute="bottom" secondItem="N4L-AY-oRM" secondAttribute="bottom" id="Kqj-GC-1FR"/>
-                            <constraint firstItem="N4L-AY-oRM" firstAttribute="top" secondItem="kLX-ia-vs8" secondAttribute="bottom" id="RFU-6A-67N"/>
+                            <constraint firstItem="hxr-UC-B5t" firstAttribute="trailing" secondItem="X6M-P9-Hvs" secondAttribute="trailing" id="LHu-Gf-MUt"/>
                             <constraint firstItem="N4L-AY-oRM" firstAttribute="leading" secondItem="X6M-P9-Hvs" secondAttribute="leading" id="Y7A-Xn-3fQ"/>
+                            <constraint firstItem="N4L-AY-oRM" firstAttribute="top" secondItem="X6M-P9-Hvs" secondAttribute="top" constant="65" id="cGY-Wa-kab"/>
                             <constraint firstItem="N4L-AY-oRM" firstAttribute="trailing" secondItem="X6M-P9-Hvs" secondAttribute="trailing" id="cJZ-qC-S2d"/>
-                            <constraint firstItem="kLX-ia-vs8" firstAttribute="centerX" secondItem="e78-Kc-IMS" secondAttribute="centerX" id="tf2-SZ-vZp"/>
-                            <constraint firstItem="kLX-ia-vs8" firstAttribute="top" secondItem="X6M-P9-Hvs" secondAttribute="top" constant="31" id="tfw-jy-b8S"/>
+                            <constraint firstItem="RmF-oM-JFT" firstAttribute="leading" secondItem="X6M-P9-Hvs" secondAttribute="leading" constant="20" id="eUp-eR-epT"/>
+                            <constraint firstItem="hxr-UC-B5t" firstAttribute="leading" secondItem="X6M-P9-Hvs" secondAttribute="leading" id="tiZ-c9-Egv"/>
+                            <constraint firstItem="N4L-AY-oRM" firstAttribute="top" secondItem="RmF-oM-JFT" secondAttribute="bottom" constant="5" id="zRU-S4-6ne"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="X6M-P9-Hvs"/>
                     </view>
-                    <navigationItem key="navigationItem" id="oQ7-Od-wX4"/>
+                    <navigationItem key="navigationItem" id="oQ7-Od-wX4">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="UG2-hb-uuU">
+                            <connections>
+                                <segue destination="BYZ-38-t0r" kind="show" id="OyQ-hx-2Zc"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="N4L-AY-oRM" id="bs2-y1-oOY"/>
                         <outlet property="tbView" destination="N4L-AY-oRM" id="TRK-vO-9Gh"/>
