@@ -21,6 +21,7 @@ class SearchController: UIViewController, UITableViewDelegate, UITableViewDataSo
     var searching = false
     var searchString = ""
     var previousSearch = ""
+    var timer: Timer?
     
     @IBOutlet weak var tbView: UITableView!
     @IBOutlet weak var searchBar: UISearchBar!
@@ -28,7 +29,7 @@ class SearchController: UIViewController, UITableViewDelegate, UITableViewDataSo
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(executeSearch), userInfo: nil, repeats: true)
+        timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(executeSearch), userInfo: nil, repeats: true)
     }
     
     override func didReceiveMemoryWarning() {
@@ -86,6 +87,13 @@ class SearchController: UIViewController, UITableViewDelegate, UITableViewDataSo
         searchBar.text = ""
         tbView.reloadData()
     }
+    
+    deinit {
+        if let timer = self.timer {
+            timer.invalidate()
+        }
+    }
+
 }
 
 
