@@ -39,10 +39,13 @@ class FavoriteController: UIViewController, UITableViewDelegate, UITableViewData
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell") as? FavoriteCityCell
         
+        let currentDate = Date()
+        
         cell?.cityLabel.text = "\(addedFavoriteCities[indexPath.row].name)"
         cell?.cityLabel.sizeToFit()
         
         cell?.degreeLabel.text = "\(addedFavoriteCities[indexPath.row].id)"
+        cell?.timeLabel.text = currentDate.getTimeWithTimezone(timezone: addedFavoriteCities[indexPath.row].country ?? "fr")
         
         return cell!
     }
