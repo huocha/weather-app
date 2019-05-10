@@ -12,6 +12,7 @@ import UIKit
 class FavoriteCityCell: UITableViewCell {
     @IBOutlet weak var cityLabel: UILabel!
     @IBOutlet weak var degreeLabel: UILabel!
+    @IBOutlet weak var timeLabel: UILabel!
     
     init(style: UITableViewCell.CellStyle, reuseIdentifier: String) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
