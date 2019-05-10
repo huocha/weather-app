@@ -140,13 +140,11 @@ class DetailController: UIViewController, UICollectionViewDelegate, UICollection
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
         if (collectionView == weatherDetailCollectionView){
-            // let height = self.weatherDetailCollectionView.frame.size.height
             let width = self.weatherDetailCollectionView.frame.size.width
 
             return CGSize(width: width/8, height: 100)
         }
         else {
-            // let height = self.footerView.frame.size.height
             let width = self.footerView.frame.size.width
 
             return CGSize(width: width/2 - 10, height: 100)
