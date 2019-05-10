@@ -4,7 +4,6 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -222,7 +221,7 @@
                                                     <color key="textColor" red="0.25098039220000001" green="0.26274509800000001" blue="0.2666666667" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="G4a-I8-aY5">
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="G4a-I8-aY5">
                                                     <rect key="frame" x="179" y="-34" width="56" height="128.5"/>
                                                 </imageView>
                                             </subviews>
@@ -230,7 +229,6 @@
                                                 <constraint firstItem="G4a-I8-aY5" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="bKp-a3-46g" secondAttribute="trailing" constant="8" symbolic="YES" id="1JO-h6-xcL"/>
                                                 <constraint firstItem="R10-WX-ufD" firstAttribute="top" secondItem="SwH-P0-5eq" secondAttribute="top" constant="20" id="2XN-fu-MiA"/>
                                                 <constraint firstAttribute="bottom" secondItem="d4G-i5-EEz" secondAttribute="bottom" constant="20" id="4ra-w2-zUL"/>
-                                                <constraint firstItem="R10-WX-ufD" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="G4a-I8-aY5" secondAttribute="trailing" constant="8" symbolic="YES" id="Bwv-CJ-uZ0"/>
                                                 <constraint firstItem="d4G-i5-EEz" firstAttribute="top" secondItem="SwH-P0-5eq" secondAttribute="top" constant="20" id="GQh-FN-AuD"/>
                                                 <constraint firstAttribute="bottom" secondItem="bKp-a3-46g" secondAttribute="bottom" constant="20" id="MFs-eD-SXc"/>
                                                 <constraint firstItem="d4G-i5-EEz" firstAttribute="leading" secondItem="R10-WX-ufD" secondAttribute="trailing" constant="10" id="TN7-2D-xK1"/>
@@ -241,6 +239,7 @@
                                                 <constraint firstItem="bKp-a3-46g" firstAttribute="top" secondItem="SwH-P0-5eq" secondAttribute="top" constant="20" id="XgI-Cy-gUO"/>
                                                 <constraint firstItem="G4a-I8-aY5" firstAttribute="centerY" secondItem="SwH-P0-5eq" secondAttribute="centerY" id="h86-W8-4Yx"/>
                                                 <constraint firstAttribute="trailing" secondItem="d4G-i5-EEz" secondAttribute="trailing" constant="20" id="xbf-qc-Iiy"/>
+                                                <constraint firstItem="R10-WX-ufD" firstAttribute="leading" secondItem="G4a-I8-aY5" secondAttribute="trailing" constant="86" id="y2X-x2-QuW"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
@@ -289,7 +288,7 @@
                             <rect key="frame" x="70" y="74" width="274" height="161"/>
                             <subviews>
                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="lxI-Go-iK0">
-                                    <rect key="frame" x="0.0" y="0.0" width="154" height="161"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="164" height="161"/>
                                 </imageView>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wOx-uW-2Jt">
                                     <rect key="frame" x="202" y="40" width="72" height="82"/>
@@ -314,7 +313,7 @@
                                 <constraint firstItem="Rzr-B9-FyO" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="lxI-Go-iK0" secondAttribute="trailing" constant="8" symbolic="YES" id="bdW-LF-aJ5"/>
                                 <constraint firstItem="lxI-Go-iK0" firstAttribute="leading" secondItem="fGo-Hz-z7d" secondAttribute="leading" id="cR3-xG-0lA"/>
                                 <constraint firstAttribute="trailing" secondItem="Rzr-B9-FyO" secondAttribute="trailing" id="kq1-8A-HwM"/>
-                                <constraint firstItem="wOx-uW-2Jt" firstAttribute="leading" secondItem="lxI-Go-iK0" secondAttribute="trailing" constant="48" id="nOP-Hl-m4O"/>
+                                <constraint firstItem="wOx-uW-2Jt" firstAttribute="leading" secondItem="lxI-Go-iK0" secondAttribute="trailing" constant="38" id="nOP-Hl-m4O"/>
                                 <constraint firstAttribute="trailing" secondItem="wOx-uW-2Jt" secondAttribute="trailing" id="nbF-jC-QQ4"/>
                                 <constraint firstItem="wOx-uW-2Jt" firstAttribute="top" secondItem="Rzr-B9-FyO" secondAttribute="bottom" constant="10" id="oZT-5S-msn"/>
                                 <constraint firstAttribute="bottom" secondItem="lxI-Go-iK0" secondAttribute="bottom" id="q32-G5-IPz"/>
