@@ -45,7 +45,7 @@ class FavoriteController: UIViewController, UITableViewDelegate, UITableViewData
         cell?.cityLabel.sizeToFit()
         
         cell?.degreeLabel.text = "\(addedFavoriteCities[indexPath.row].id)"
-        cell?.timeLabel.text = currentDate.getTimeWithTimezone(timezone: addedFavoriteCities[indexPath.row].country ?? "fr")
+        //cell?.timeLabel.text = currentDate.getTimeWithTimezone(timezone: addedFavoriteCities[indexPath.row].country ?? "fr")
         
         return cell!
     }

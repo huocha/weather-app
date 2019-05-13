@@ -16,12 +16,14 @@ class DetailController: UIViewController, UICollectionViewDelegate, UICollection
     @IBOutlet weak var weatherDetailCollectionView: UICollectionView!
     @IBOutlet weak var weatherInWeekTableView: UITableView!
     @IBOutlet weak var iconView: UIImageView!
+    @IBOutlet weak var subHeaderView: UIView!
     @IBOutlet weak var minDegreeLabel: UILabel!
     @IBOutlet weak var maxDegreeLabel: UILabel!
     @IBOutlet weak var currentDayLabel: UILabel!
     @IBOutlet weak var headerView: UIView!
     @IBOutlet var footerView: UICollectionView!
     
+    @IBOutlet weak var subHeaderView2: UIView!
     var cityName: String!
     var cityId: Int!
     var icon = String()
@@ -60,7 +62,11 @@ class DetailController: UIViewController, UICollectionViewDelegate, UICollection
                 self.maxDegreeLabel.text = "\(maxDegree)"
                 self.icon = result?.weather[0].icon ?? "default"
                 
-                self.iconView.image = UIImage(named: self.icon)
+                let backgroundColor = UIColor().getColorByWeather(icon: result?.weather[0].icon ?? "default")
+                //self.initBackgroundColor(color: backgroundColor)
+                
+                let img = UIImage(named: self.icon)
+                self.iconView.image = UIImage(named: self.icon) //img?.tinted(with: backgroundColor)
             }
             
         }
@@ -89,7 +95,19 @@ class DetailController: UIViewController, UICollectionViewDelegate, UICollection
         
         self.weatherInWeekTableView.tableHeaderView = headerView
         self.weatherInWeekTableView.tableFooterView = footerView
+        
+        let border = CALayer()
+        border.borderBottom(with: UIColor(rgb: 0xa1a9c3), view: subHeaderView)
     }
+    
+    func initBackgroundColor(color: UIColor) -> Void{
+        headerView.backgroundColor = color
+        subHeaderView2.backgroundColor = color
+        subHeaderView.backgroundColor = color
+        weatherDetailCollectionView.backgroundColor = color
+        
+    }
+
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -120,6 +138,7 @@ class DetailController: UIViewController, UICollectionViewDelegate, UICollection
             
             cell.degreeLabel.text = "\(degrees[indexPath.row])°"
             cell.iconImage.image = UIImage(named: icons[indexPath.row])
+
             
             return cell
         }
@@ -172,6 +191,10 @@ class DetailController: UIViewController, UICollectionViewDelegate, UICollection
         cell.minDegreeTbViewLabel.text = "\(minDegree[indexPath.row])°"
         
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        cell.backgroundColor = UIColor.clear
     }
     
 }

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3901679C2289C740005C8F63 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3901679B2289C73F005C8F63 /* Colors.swift */; };
 		39142981227EEB5D0067FE57 /* FiveDaysWeather.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39142980227EEB5D0067FE57 /* FiveDaysWeather.swift */; };
 		39142983227EEC8F0067FE57 /* City.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39142982227EEC8F0067FE57 /* City.swift */; };
 		3946E337228495D200E4A22A /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3946E336228495D200E4A22A /* Date.swift */; };
@@ -56,6 +57,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3901679B2289C73F005C8F63 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		39142980227EEB5D0067FE57 /* FiveDaysWeather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiveDaysWeather.swift; sourceTree = "<group>"; };
 		39142982227EEC8F0067FE57 /* City.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = City.swift; sourceTree = "<group>"; };
 		3946E336228495D200E4A22A /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
@@ -199,6 +201,7 @@
 				39142982227EEC8F0067FE57 /* City.swift */,
 				3946E336228495D200E4A22A /* Date.swift */,
 				39E97EBE2285D45A0025EA3A /* Defaults.swift */,
+				3901679B2289C73F005C8F63 /* Colors.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -377,6 +380,7 @@
 				39F4739722846A2F0049F81F /* WeatherCollectionViewCell.swift in Sources */,
 				3987D08F2257EF3000DA5FAA /* AppDelegate.swift in Sources */,
 				39E451F0225E810000D7CA3C /* Detail.swift in Sources */,
+				3901679C2289C740005C8F63 /* Colors.swift in Sources */,
 				39142981227EEB5D0067FE57 /* FiveDaysWeather.swift in Sources */,
 				39E451E8225E617800D7CA3C /* Rain.swift in Sources */,
 				39E451E0225E457D00D7CA3C /* Constants.swift in Sources */,
