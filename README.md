@@ -30,6 +30,6 @@ Chaque binôme disposera de 20 minutes. 10 minutes de présentation (avec supp
 
 
 ## Demo
-1. ![Screenshots 1](/screenshots/1.png)
-2. ![Screenshots 2](/screenshots/2.png)
-3. ![Screenshots 2](/screenshots/3.png)
+1. ![Screenshots 1](/screenshots/1.png =250x250)
+2. ![Screenshots 2](/screenshots/2.png | width=100)
+3. ![Screenshots 2](/screenshots/3.png | width=100)
