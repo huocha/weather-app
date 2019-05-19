@@ -34,7 +34,7 @@ class FavoriteController: UIViewController, UITableViewDelegate, UITableViewData
         let savedCityId = Defaults.getIds()
         addedFavoriteCities = cities?.filter({ savedCityId.contains($0.id) }) ?? []
         
-        self.timer = Timer.scheduledTimer(timeInterval: 10.0, target: self, selector: Selector(("updateTimeLabel")), userInfo: nil, repeats: true)
+        self.timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: Selector(("updateTimeLabel")), userInfo: nil, repeats: true)
         
         NotificationCenter.default.addObserver(self,
                                                selector: Selector(("updateTimeLabel")),
@@ -46,7 +46,7 @@ class FavoriteController: UIViewController, UITableViewDelegate, UITableViewData
     @objc func updateTimeLabel() {
         if (updateTime) {
             for i in 0...currentCityTime.count-1 {
-                currentCityTime[i] = currentCityTime[i].addingTimeInterval(10.0)
+                currentCityTime[i] = currentCityTime[i].addingTimeInterval(1.0)
             }
             
             DispatchQueue.main.async {
