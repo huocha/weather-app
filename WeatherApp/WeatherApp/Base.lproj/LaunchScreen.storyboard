@@ -18,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="WeatherApp" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mCc-uH-wog">
-                                <rect key="frame" x="80" y="501" width="254" height="41"/>
+                                <rect key="frame" x="0.0" y="501" width="414" height="41"/>
                                 <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="30"/>
                                 <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -29,15 +29,25 @@
                                     <constraint firstAttribute="height" constant="256" id="gU3-5P-1cy"/>
                                 </constraints>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="© 2019 by J &amp; N" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o2e-fR-H1k">
+                                <rect key="frame" x="0.0" y="822" width="414" height="24"/>
+                                <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
+                                <color key="textColor" red="0.25098039220000001" green="0.26274509800000001" blue="0.2666666667" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.074509803920000006" green="0.16078431369999999" blue="0.40784313729999999" alpha="1" colorSpace="custom" customColorSpace="adobeRGB1998"/>
                         <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="o2e-fR-H1k" secondAttribute="bottom" constant="16" id="0RN-Gz-QQt"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="69O-jI-dds" secondAttribute="trailing" constant="70" id="1ZC-JK-X0j"/>
+                            <constraint firstItem="o2e-fR-H1k" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="A9J-Tz-hMY"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="mCc-uH-wog" secondAttribute="bottom" constant="320" id="B9f-R4-zsa"/>
                             <constraint firstItem="69O-jI-dds" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="105" id="CvH-xJ-tNZ"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="mCc-uH-wog" secondAttribute="trailing" constant="80" id="EgL-Vn-ec6"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="mCc-uH-wog" secondAttribute="trailing" id="EgL-Vn-ec6"/>
+                            <constraint firstItem="o2e-fR-H1k" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="Xi6-na-G9p"/>
+                            <constraint firstItem="o2e-fR-H1k" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="b98-Mb-dhT"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="69O-jI-dds" secondAttribute="bottom" constant="340" id="hlr-fY-Pgt"/>
-                            <constraint firstItem="mCc-uH-wog" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="80" id="x7d-5l-fKf"/>
+                            <constraint firstItem="mCc-uH-wog" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="x7d-5l-fKf"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>

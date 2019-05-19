@@ -94,8 +94,6 @@ class FavoriteController: UIViewController, UITableViewDelegate, UITableViewData
 
         cell?.cityLabel.text = "\(addedFavoriteCities[indexPath.row].name)"
         cell?.cityLabel.sizeToFit()
-        
-        print(currentWeatherCities[indexPath.row])
 
         cell?.degreeLabel.text = "\(currentWeatherCities[indexPath.row])°"
         cell?.timeLabel.text = currentCityTime[indexPath.row].toString()
