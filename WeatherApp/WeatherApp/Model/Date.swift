@@ -14,6 +14,7 @@ extension String {
         
         return dateFormatter.date(from: self)!
     }
+
 }
 
 
@@ -25,15 +26,16 @@ extension Date {
         
         return dateFormatter.string(from: self)
     }
-    
-    func getTimeWithTimezone(countryCode: String) -> String {
-        // #TODO: add json to load timezone by countrycode
-        let timezone = countryCode
-        let dateFormatter = DateFormatter()
-        dateFormatter.locale = Locale(identifier: timezone)
-        dateFormatter.setLocalizedDateFormatFromTemplate("HH:mm")
 
-        return dateFormatter.string(from: self)
+    func addHours(hours: Int) -> Date {
+        return Calendar.current.date(byAdding: .hour, value: hours, to: self)!
+    }
+    
+    func toString() -> String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "HH:mm"
+        
+        return formatter.string(from: self)
     }
 }
 

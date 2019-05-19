@@ -12,7 +12,10 @@ class FavoriteController: UIViewController, UITableViewDelegate, UITableViewData
 
     @IBOutlet weak var tbView: UITableView!
     var addedFavoriteCities: [City] = []
+    var currentCityTime: [Date] = []
     var cities: [City]?
+    var currentWeatherCities: [Int] = []
+    var converter = Converter()
 
     
     override func viewDidLoad() {
@@ -22,11 +25,61 @@ class FavoriteController: UIViewController, UITableViewDelegate, UITableViewData
         
         let savedCityId = Defaults.getIds()
         addedFavoriteCities = cities?.filter({ savedCityId.contains($0.id) }) ?? []
+        
     }
     
+    // Blocking function. Must not be called on main queue!
+    func queryManyWeather(cities: [City]) -> Void {
+        let group = DispatchGroup()
+        self.currentWeatherCities.removeAll()
+        
+        for city in cities {
+            
+            group.enter()
+            CurrentWeather.queryCurrentWeather(matching: [ "id" : String(city.id) ]) { (result) in
+                if (result != nil) {
+                    let celDegree = self.converter.convertKToC(kevin: (result!.main.temp))
+
+                    self.currentWeatherCities.append(celDegree)
+                }
+                group.leave()
+            }
+            group.wait()
+        }
+        
+    }
+    
+    func queryManyTime(cities: [City]) -> Void {
+        let group = DispatchGroup()
+        self.currentCityTime.removeAll()
+        for city in cities {
+            
+            group.enter()
+            TimeZone.queryTimezone(matching: [ "lat" : String(city.coord.lat), "lng": String(city.coord.lon) ]) { (result) in
+                if (result != nil) {
+                    let dateFormatter = DateFormatter()
+                    dateFormatter.dateFormat = "yyyy-MM-dd HH:mm"
+ 
+                    let date = dateFormatter.date(from: result?.time ?? "")
+
+                    self.currentCityTime.append(date ?? Date())
+                }
+                group.leave()
+               
+            }
+            group.wait()
+            
+        }
+        
+    }
+    
+    
     override func viewWillAppear(_ animated: Bool) {
+        queryManyWeather(cities: addedFavoriteCities)
+        queryManyTime(cities: addedFavoriteCities)
         tbView.reloadData()
     }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -38,14 +91,14 @@ class FavoriteController: UIViewController, UITableViewDelegate, UITableViewData
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell") as? FavoriteCityCell
-        
-        let currentDate = Date()
-        
+
         cell?.cityLabel.text = "\(addedFavoriteCities[indexPath.row].name)"
         cell?.cityLabel.sizeToFit()
         
-        cell?.degreeLabel.text = "\(addedFavoriteCities[indexPath.row].id)"
-        //cell?.timeLabel.text = currentDate.getTimeWithTimezone(timezone: addedFavoriteCities[indexPath.row].country ?? "fr")
+        print(currentWeatherCities[indexPath.row])
+
+        cell?.degreeLabel.text = "\(currentWeatherCities[indexPath.row])°"
+        cell?.timeLabel.text = currentCityTime[indexPath.row].toString()
         
         return cell!
     }
@@ -54,7 +107,6 @@ class FavoriteController: UIViewController, UITableViewDelegate, UITableViewData
         let detailView = storyboard?.instantiateViewController(withIdentifier: "DetailController") as? DetailController
         
         detailView?.cityId = addedFavoriteCities[indexPath.row].id
-        // #TODO: query weather each time
         
         detailView?.cityName = addedFavoriteCities[indexPath.row].name
         
@@ -67,6 +119,8 @@ class FavoriteController: UIViewController, UITableViewDelegate, UITableViewData
             
             Defaults.remove(id: self.addedFavoriteCities[indexPath.row].id)
             self.addedFavoriteCities.remove(at: indexPath.row)
+            self.currentWeatherCities.remove(at: indexPath.row)
+            self.currentCityTime.remove(at: indexPath.row)
             self.tbView.reloadData()
             
             completionHandler(true)
@@ -79,7 +133,6 @@ class FavoriteController: UIViewController, UITableViewDelegate, UITableViewData
     
     func addFavoriteCity(city: City){
         self.addedFavoriteCities.append(city)
-        
         Defaults.save(id: city.id)
         tbView.reloadData()
     }

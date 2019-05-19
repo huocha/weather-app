@@ -62,10 +62,9 @@ class DetailController: UIViewController, UICollectionViewDelegate, UICollection
                 self.maxDegreeLabel.text = "\(maxDegree)"
                 self.icon = result?.weather[0].icon ?? "default"
                 
-                let backgroundColor = UIColor().getColorByWeather(icon: result?.weather[0].icon ?? "default")
+                // let backgroundColor = UIColor().getColorByWeather(icon: result?.weather[0].icon ?? "default")
                 //self.initBackgroundColor(color: backgroundColor)
                 
-                let img = UIImage(named: self.icon)
                 self.iconView.image = UIImage(named: self.icon) //img?.tinted(with: backgroundColor)
             }
             
@@ -105,9 +104,7 @@ class DetailController: UIViewController, UICollectionViewDelegate, UICollection
         subHeaderView2.backgroundColor = color
         subHeaderView.backgroundColor = color
         weatherDetailCollectionView.backgroundColor = color
-        
     }
-
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)

@@ -22,6 +22,7 @@ class SearchController: UIViewController, UITableViewDelegate, UITableViewDataSo
     var searchString = ""
     var previousSearch = ""
     var timer: Timer?
+    var converter = Converter()
     
     @IBOutlet weak var tbView: UITableView!
     @IBOutlet weak var searchBar: UISearchBar!
@@ -58,12 +59,12 @@ class SearchController: UIViewController, UITableViewDelegate, UITableViewDataSo
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        var addedCity:City?
+        var addedCity: City?
         
         if searching {
             addedCity = searchedCities[indexPath.row]
         }
-       
+
         delegate?.addFavoriteCity(city: addedCity!)
 
         self.navigationController?.popViewController(animated: true)
