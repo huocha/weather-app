@@ -21,7 +21,9 @@ Chaque binôme disposera de 20 minutes. 10 minutes de présentation (avec supp
 
 ## Feature
 - [x] A view to search weather by city
+- [] Specify country name instead of country code in search VC
 - [x] Weather detail for each city including: current, max, min temperature, a list of 5 next days weather, extra information about wind, rain, ...
 - [x] Add/Remove a city to favorite list
 - [x] Save favorite list even after quitting app (user default)
 - [x] Show current time/weather of each city in favorite list
+- [] Show icon for current weather in favorite list
