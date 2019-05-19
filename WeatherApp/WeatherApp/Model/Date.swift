@@ -26,7 +26,11 @@ extension Date {
         
         return dateFormatter.string(from: self)
     }
-
+    
+    func addMinutes(minutes: Int) -> Date {
+        return Calendar.current.date(byAdding: .minute, value: minutes, to: self)!
+    }
+    
     func addHours(hours: Int) -> Date {
         return Calendar.current.date(byAdding: .hour, value: hours, to: self)!
     }

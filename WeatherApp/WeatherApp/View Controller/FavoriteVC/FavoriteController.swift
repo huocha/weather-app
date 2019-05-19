@@ -16,7 +16,15 @@ class FavoriteController: UIViewController, UITableViewDelegate, UITableViewData
     var cities: [City]?
     var currentWeatherCities: [Int] = []
     var converter = Converter()
-
+    var timer: Timer?
+    var updateTime = false
+    deinit  {
+        NotificationCenter.default.removeObserver(self)
+        
+        if let timer = self.timer {
+            timer.invalidate()
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,6 +34,25 @@ class FavoriteController: UIViewController, UITableViewDelegate, UITableViewData
         let savedCityId = Defaults.getIds()
         addedFavoriteCities = cities?.filter({ savedCityId.contains($0.id) }) ?? []
         
+        self.timer = Timer.scheduledTimer(timeInterval: 10.0, target: self, selector: Selector(("updateTimeLabel")), userInfo: nil, repeats: true)
+        
+        NotificationCenter.default.addObserver(self,
+                                               selector: Selector(("updateTimeLabel")),
+                                               name: UIApplication.willEnterForegroundNotification,
+                                               object: nil)
+        updateTime = true
+    }
+    
+    @objc func updateTimeLabel() {
+        if (updateTime) {
+            for i in 0...currentCityTime.count-1 {
+                currentCityTime[i] = currentCityTime[i].addingTimeInterval(10.0)
+            }
+            
+            DispatchQueue.main.async {
+                self.tbView.reloadData()
+            }
+        }
     }
     
     // Blocking function. Must not be called on main queue!
@@ -77,6 +104,7 @@ class FavoriteController: UIViewController, UITableViewDelegate, UITableViewData
     override func viewWillAppear(_ animated: Bool) {
         queryManyWeather(cities: addedFavoriteCities)
         queryManyTime(cities: addedFavoriteCities)
+        
         tbView.reloadData()
     }
     
