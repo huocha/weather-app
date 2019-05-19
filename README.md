@@ -31,7 +31,7 @@ Chaque binôme disposera de 20 minutes. 10 minutes de présentation (avec supp
 
 ## Demo
 <div style="display: inline-block">
- <img src="/screenshots/1.png" alt="drawing" style="width:200px;"/> 
- <img src="/screenshots/1.png" alt="drawing" style="width:200px;"/> 
- <img src="/screenshots/1.png" alt="drawing" style="width:200px;"/> 
+ <img src="/screenshots/1.png" alt="drawing" style="width:150px;"/> 
+ <img src="/screenshots/1.png" alt="drawing" style="width:150px;"/> 
+ <img src="/screenshots/1.png" alt="drawing" style="width:150px;"/> 
 </div>
