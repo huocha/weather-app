@@ -64,19 +64,21 @@ extension UIImage {
 }
 
 extension CALayer {
-    func borderBottom(with color: UIColor, view: UIView) -> Void {
+    func borderBottom(with color: UIColor, view: UICollectionView) -> Void {
         let border = self
         border.backgroundColor = color.cgColor
-        border.frame = CGRect(x: 0, y: view.frame.height, width: view.frame.width, height: 0.5)
+        
+        border.frame = CGRect(x: 0, y: view.frame.height - 4, width: view.frame.width*2, height: 0.5)
         
         view.layer.addSublayer(border)
     }
     
-    func borderTop(with color: UIColor, view: UIView) -> Void {
+    func borderTop(with color: UIColor, view: UICollectionView) -> Void {
         let border = self
         border.backgroundColor = color.cgColor
-        border.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: 0.5)
         
+        border.frame = CGRect(x: 0, y: 0, width: view.frame.width*2, height: 0.5)
+  
         view.layer.addSublayer(border)
     }
 }

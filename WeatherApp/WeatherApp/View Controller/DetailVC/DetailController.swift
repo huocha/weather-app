@@ -98,8 +98,9 @@ class DetailController: UIViewController, UICollectionViewDelegate, UICollection
         self.weatherInWeekTableView.tableHeaderView = headerView
         self.weatherInWeekTableView.tableFooterView = footerView
         
-        let border = CALayer()
-        border.borderBottom(with: UIColor(rgb: 0xa1a9c3), view: subHeaderView)
+        CALayer().borderTop(with: UIColor(rgb: 0xa1a9c3), view: weatherDetailCollectionView)
+        CALayer().borderBottom(with: UIColor(rgb: 0xa1a9c3), view: weatherDetailCollectionView)
+    
     }
     
     func initBackgroundColor(color: UIColor) -> Void{
@@ -142,6 +143,7 @@ class DetailController: UIViewController, UICollectionViewDelegate, UICollection
             cell.degreeLabel.text = "\(degrees[indexPath.row])°"
             cell.iconImage.image = UIImage(named: icons[indexPath.row])
             cell.timeLabel.text = time[indexPath.row]+"h"
+            
             
             return cell
         }
