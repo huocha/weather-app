@@ -346,6 +346,7 @@
                                     <connections>
                                         <outlet property="degreeLabel" destination="pVZ-nr-YuD" id="CIi-pL-GBM"/>
                                         <outlet property="iconImage" destination="SPT-76-yoQ" id="dJM-Qv-hMN"/>
+                                        <outlet property="timeLabel" destination="P6K-3O-CmI" id="Xv4-yK-Zc1"/>
                                     </connections>
                                 </collectionViewCell>
                             </cells>

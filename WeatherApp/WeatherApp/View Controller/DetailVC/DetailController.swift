@@ -63,7 +63,7 @@ class DetailController: UIViewController, UICollectionViewDelegate, UICollection
                 self.icon = result?.weather[0].icon ?? "default"
                 
                 // let backgroundColor = UIColor().getColorByWeather(icon: result?.weather[0].icon ?? "default")
-                //self.initBackgroundColor(color: backgroundColor)
+                // self.initBackgroundColor(color: backgroundColor)
                 
                 self.iconView.image = UIImage(named: self.icon) //img?.tinted(with: backgroundColor)
             }
@@ -129,13 +129,16 @@ class DetailController: UIViewController, UICollectionViewDelegate, UICollection
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "weatherCell", for: indexPath) as! WeatherCollectionViewCell
             
             // #TODO: add missing time for example 9h -> 12h should be 9h 10h 11h 12h
+            let formatter = DateFormatter()
+            formatter.dateFormat = "hh"
             
+            var time = weatherInDay.map({ $0.dt_txt.substring(with: 11..<13) })
             var degrees = weatherInDay.map({ self.converter.convertKToC(kevin: ($0.main.temp)) })
             var icons = weatherInDay.map({ $0.weather[0].icon + "-small" })
             
             cell.degreeLabel.text = "\(degrees[indexPath.row])°"
             cell.iconImage.image = UIImage(named: icons[indexPath.row])
-
+            cell.timeLabel.text = time[indexPath.row]+"h"
             
             return cell
         }

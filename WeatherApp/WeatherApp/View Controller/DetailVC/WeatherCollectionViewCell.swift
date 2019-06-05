@@ -12,7 +12,6 @@ import UIKit
 class WeatherCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var degreeLabel: UILabel!
-    @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var iconImage: UIImageView!
-    
+    @IBOutlet weak var timeLabel: UILabel!
 }

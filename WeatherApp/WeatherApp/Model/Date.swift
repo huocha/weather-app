@@ -14,7 +14,16 @@ extension String {
         
         return dateFormatter.date(from: self)!
     }
-
+    
+    func index(from: Int) -> Index {
+        return self.index(startIndex, offsetBy: from)
+    }
+    
+    func substring(with r: Range<Int>) -> String {
+        let startIndex = index(from: r.lowerBound)
+        let endIndex = index(from: r.upperBound)
+        return String(self[startIndex..<endIndex])  
+    }
 }
 
 
