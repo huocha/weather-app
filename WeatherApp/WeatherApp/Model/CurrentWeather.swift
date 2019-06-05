@@ -19,6 +19,8 @@ struct CurrentWeather: Codable {
     let snow: Snow?
     let rain: Rain?
     let sys: CurrentSys
+    let visibility: Double?
+    let clouds: Clouds?
     
     static func queryCurrentWeather(matching query: [String: String], completion: @escaping (CurrentWeather?) -> Void) -> Void {
         

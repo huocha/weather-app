@@ -278,7 +278,7 @@
                         <outlet property="cityLabel" destination="Nie-7W-Z87" id="OIb-kZ-fjF"/>
                         <outlet property="currentDayLabel" destination="q25-CT-iGi" id="i8k-aD-QXQ"/>
                         <outlet property="degreeLabel" destination="wOx-uW-2Jt" id="aoh-wn-XGG"/>
-                        <outlet property="footerView" destination="AyB-vQ-34L" id="a3L-BZ-c5g"/>
+                        <outlet property="footerView" destination="AyB-vQ-34L" id="O5v-Wy-Nhd"/>
                         <outlet property="headerView" destination="PNR-k2-lkr" id="YDY-vh-0wN"/>
                         <outlet property="iconView" destination="lxI-Go-iK0" id="dvN-Bq-seE"/>
                         <outlet property="maxDegreeLabel" destination="d1e-ne-cND" id="Yc3-Nl-uNn"/>

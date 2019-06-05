@@ -21,16 +21,16 @@ class DetailController: UIViewController, UICollectionViewDelegate, UICollection
     @IBOutlet weak var maxDegreeLabel: UILabel!
     @IBOutlet weak var currentDayLabel: UILabel!
     @IBOutlet weak var headerView: UIView!
-    @IBOutlet var footerView: UICollectionView!
-    
     @IBOutlet weak var subHeaderView2: UIView!
+    @IBOutlet weak var footerView: UICollectionView!
+    
     var cityName: String!
     var cityId: Int!
     var icon = String()
     var weatherInDay: [Detail] = []
     var weatherInWeek: [Detail] = []
-    
-    private var converter = Converter()
+    var currentWeather: CurrentWeather?
+    var converter = Converter()
     var currentDate = Date()
    
     override func viewDidLoad() {
@@ -46,12 +46,14 @@ class DetailController: UIViewController, UICollectionViewDelegate, UICollection
         weatherLabel.minimumScaleFactor = 0.2
         weatherLabel.numberOfLines = 2
         
-        currentDayLabel.text = currentDate.getDayOfWeek
+        currentDayLabel.text = currentDate.getDayOfWeek()
         
         CurrentWeather.queryCurrentWeather(matching: [ "id" : String(cityId) ]) { (result) in
-  
+            self.currentWeather = result
+            
             // Update the UI on the main thread
             DispatchQueue.main.async() {
+                
                 let celDegree = self.converter.convertKToC(kevin: (result?.main.temp)!)
                 let minDegree = self.converter.convertKToC(kevin: (result?.main.temp_min)!)
                 let maxDegree = self.converter.convertKToC(kevin: (result?.main.temp_max)!)
@@ -66,16 +68,17 @@ class DetailController: UIViewController, UICollectionViewDelegate, UICollection
                 // self.initBackgroundColor(color: backgroundColor)
                 
                 self.iconView.image = UIImage(named: self.icon) //img?.tinted(with: backgroundColor)
+                self.footerView.reloadData()
             }
-            
+           
         }
         
         let flowLayout = UICollectionViewFlowLayout()
         flowLayout.itemSize = CGSize(width: 75, height: 100)
         flowLayout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-        
         flowLayout.scrollDirection = .horizontal
         flowLayout.minimumInteritemSpacing = 0.0
+        
         weatherDetailCollectionView.collectionViewLayout = flowLayout
         
         FiveDaysWeather.queryFiveDayWeather(matching: [ "id" : String(cityId) ]) { (result) in
@@ -145,8 +148,17 @@ class DetailController: UIViewController, UICollectionViewDelegate, UICollection
         else  {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "footerCollectionCell", for: indexPath) as! FooterCollectionCell
             
-            var keys = ["Sunrise", "Sunset", "Rain", "Humidity", "Wind", "Feel", "Pressure", "Visibility"]
-            var values = ["6:13", "10:00", "Rain", "Humidity", "Wind", "Feel", "Pressure", "Visibility"]
+            let sunrise = currentWeather?.sys.sunrise.getDateFromUnixStamp() ?? "06:00";
+            let sunset = currentWeather?.sys.sunset.getDateFromUnixStamp() ?? "18:00";
+            let rain = "\(currentWeather?.rain?.one ?? currentWeather?.rain?.one ?? 0)";
+            let humidity = "\(currentWeather?.main.humidity ?? 0) %"
+            let wind = "\(currentWeather?.wind.speed ?? 0) km/h"
+            let clouds = "\(currentWeather?.clouds?.all ?? 0) %"
+            let pressure = "\(currentWeather?.main.pressure ?? 0) hPa"
+            let visibility = "\((currentWeather?.visibility ?? 1000/1000).toFixed(0)) km"
+            
+            var keys = ["Sunrise", "Sunset", "Rain", "Humidity", "Wind", "Visibility", "Pressure", "Clouds",]
+            var values = [sunrise, sunset, rain, humidity, wind, visibility, pressure, clouds]
             
             cell.descriptionKeyLabel.text = "\(keys[indexPath.row])"
             cell.valueLabel.text = "\(values[indexPath.row])"
@@ -177,7 +189,7 @@ class DetailController: UIViewController, UICollectionViewDelegate, UICollection
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "weatherDaysTableCell", for: indexPath) as! WeatherDaysTableCell
 
-        cell.dayTbViewLabel.text = weatherInWeek[indexPath.row].dt_txt.toDate.getDayOfWeek
+        cell.dayTbViewLabel.text = weatherInWeek[indexPath.row].dt_txt.toDate.getDayOfWeek()
         
         var icons = weatherInWeek.map({ $0.weather[0].icon + "-small" })
         var maxDegree = weatherInWeek.map({ self.converter.convertKToC(kevin: ($0.main.temp_max)) })

@@ -22,13 +22,13 @@ extension String {
     func substring(with r: Range<Int>) -> String {
         let startIndex = index(from: r.lowerBound)
         let endIndex = index(from: r.upperBound)
-        return String(self[startIndex..<endIndex])  
+        return String(self[startIndex..<endIndex])
     }
 }
 
 
 extension Date {
-    var getDayOfWeek: String {
+    func getDayOfWeek() -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.locale = Locale(identifier: "en-US")
         dateFormatter.setLocalizedDateFormatFromTemplate("EEEE")
@@ -52,3 +52,13 @@ extension Date {
     }
 }
 
+extension Double {
+    func getDateFromUnixStamp() -> String {
+        let date = Date(timeIntervalSince1970: self)
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "HH:mm"
+       
+        let localDate = dateFormatter.string(from: date)
+        return localDate
+    }
+}
