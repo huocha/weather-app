@@ -32,7 +32,8 @@ class DetailController: UIViewController, UICollectionViewDelegate, UICollection
     var currentWeather: CurrentWeather?
     var converter = Converter()
     var currentDate = Date()
-   
+    var sortedWeather: Array<(key: Substring, value: Array<Detail>)> = Array()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -85,6 +86,10 @@ class DetailController: UIViewController, UICollectionViewDelegate, UICollection
             
             // #TODO: group by date and find min max temp
             self.weatherInWeek = result?.list ?? []
+            
+            let groupDic = Dictionary(grouping: self.weatherInWeek, by: { $0.dt_txt.prefix(10)})
+            self.sortedWeather = Array(groupDic).sorted{ $0.0 < $1.0 }
+            
             self.weatherInDay = Array(result?.list.prefix(8) ?? [])
             
             // Update the UI on the main thread
@@ -99,6 +104,7 @@ class DetailController: UIViewController, UICollectionViewDelegate, UICollection
         self.weatherInWeekTableView.tableFooterView = footerView
         
         CALayer().borderTop(with: UIColor(rgb: 0xa1a9c3), view: weatherDetailCollectionView)
+        CALayer().borderTop(with: UIColor(rgb: 0xa1a9c3), view: footerView)
         CALayer().borderBottom(with: UIColor(rgb: 0xa1a9c3), view: weatherDetailCollectionView)
     
     }
@@ -184,19 +190,19 @@ class DetailController: UIViewController, UICollectionViewDelegate, UICollection
         }
         
     }
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return weatherInWeek.count
-    }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "weatherDaysTableCell", for: indexPath) as! WeatherDaysTableCell
-
-        cell.dayTbViewLabel.text = weatherInWeek[indexPath.row].dt_txt.toDate.getDayOfWeek()
         
-        var icons = weatherInWeek.map({ $0.weather[0].icon + "-small" })
-        var maxDegree = weatherInWeek.map({ self.converter.convertKToC(kevin: ($0.main.temp_max)) })
+        let currentSection = sortedWeather[indexPath.section].value
         
-        var minDegree = weatherInWeek.map({ self.converter.convertKToC(kevin: ($0.main.temp_min)) })
+        var time = currentSection.map({ $0.dt_txt.substring(with: 11..<16) })
+        cell.dayTbViewLabel.text = "\(time[indexPath.row])"
+        
+        var icons = currentSection.map({ $0.weather[0].icon + "-small" })
+        var maxDegree = currentSection.map({ self.converter.convertKToC(kevin: ($0.main.temp_max)) })
+        
+        var minDegree = currentSection.map({ self.converter.convertKToC(kevin: ($0.main.temp_min)) })
         
         cell.iconImageTbViewLabel.image = UIImage(named: icons[indexPath.row])
         
@@ -205,6 +211,30 @@ class DetailController: UIViewController, UICollectionViewDelegate, UICollection
         cell.minDegreeTbViewLabel.text = "\(minDegree[indexPath.row])°"
         
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        let currentDate = String(sortedWeather[section].key).formatDate(format: "yyyy-MM-dd")
+        let currentSectionDay = currentDate.getDayOfWeek()
+        let currentSectionDate = currentDate.formatDate(format: "dd/MM")
+        
+        return "\(currentSectionDay) - \(currentSectionDate)"
+    }
+    
+    func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+        if let header = view as? UITableViewHeaderFooterView {
+            header.textLabel!.font = UIFont(name: "AvenirNext-Medium", size: 20)
+            header.textLabel!.textColor = UIColor(rgb: 0xFA6B6B)
+            header.textLabel!.textAlignment = .center
+        }
+    }
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return sortedWeather.count
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return sortedWeather[section].value.count
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {

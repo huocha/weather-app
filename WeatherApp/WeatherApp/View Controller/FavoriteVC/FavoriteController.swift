@@ -124,7 +124,7 @@ class FavoriteController: UIViewController, UITableViewDelegate, UITableViewData
         cell?.cityLabel.sizeToFit()
 
         cell?.degreeLabel.text = "\(currentWeatherCities[indexPath.row])°"
-        cell?.timeLabel.text = currentCityTime[indexPath.row].toString()
+        cell?.timeLabel.text = currentCityTime[indexPath.row].formatDate(format: "HH:mm")
         
         return cell!
     }

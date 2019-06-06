@@ -15,6 +15,13 @@ extension String {
         return dateFormatter.date(from: self)!
     }
     
+    func formatDate(format: String) -> Date {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = format
+        
+        return dateFormatter.date(from: self)!
+    }
+    
     func index(from: Int) -> Index {
         return self.index(startIndex, offsetBy: from)
     }
@@ -44,12 +51,13 @@ extension Date {
         return Calendar.current.date(byAdding: .hour, value: hours, to: self)!
     }
     
-    func toString() -> String {
+    func formatDate(format: String) -> String {
         let formatter = DateFormatter()
-        formatter.dateFormat = "HH:mm"
+        formatter.dateFormat = format
         
         return formatter.string(from: self)
     }
+
 }
 
 extension Double {
